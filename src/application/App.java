@@ -9,6 +9,7 @@ public class App {
 		// �떊李ш퇋
 		// LEE Yoon Seo
 		// LEE Ji Hyeon
+		// lee insung
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
