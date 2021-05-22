@@ -6,8 +6,9 @@ import java.io.IOException;
 public class App {
 	/* Launch the application */
 	public static void main(String[] args) throws IOException {
-		// 신찬규
+		// �떊李ш퇋
 		// LEE Yoon Seo
+		// LEE Ji Hyeon
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
