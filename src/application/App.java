@@ -7,6 +7,7 @@ public class App {
 	/* Launch the application */
 	public static void main(String[] args) throws IOException {
 		// 신찬규
+		// LEE Yoon Seo
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
