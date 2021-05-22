@@ -29,28 +29,22 @@
     ```jsx
     **github push 하는 법**
     **처음 설정**
-    1. git clone -b chan --single-branch http://github.com/scv1702/2021-java-programming
-    -- 코드 수정 후 --
+    1. git clone -b master --single-branch http://github.com/scv1702/2021-java-programming
     2. cd 2021-java-programming (clone한 디렉토리로 이동)
-    3. git branch {각자 branch 명}
-    4. git checkout {각자 branch 명}
-    5. git add .
-    6. git commit -m "커밋 내용"
-    5. git push --set-upstream origin {각자 branch 명}
+    3. git checkout -b {각자 branch 명}
+    4. git add .
+    5. git commit -m "커밋 내용"
+    6. git push origin {각자 branch 명}
+    7. github repo 웹페이지 들어가서 master <- 각자 branch로 pull-request
 
     **설정 후** 
     -- 코드 수정 후 --
-    1. cd 2021-java-programming (push 할 디렉토리로 이동)
-    2. git add .
-    3. git commit -m "커밋 내용"
-    4. git push origin {각자 branch 명}
+    1. git add .
+    2. git commit -m "커밋 내용"
+    3. git push origin {각자 branch 명}
 
-    **github clone 하는 법**
-    - master branch
-    git clone -b master --single-branch http://github.com/scv1702/2021-java-programming
-
-    - 특정 branch 
-    git clone -b {각자 branch 명} --single-branch http://github.com/scv1702/2021-java-programming
+    **업데이트 한 코드 다운받는 법**
+    1. git pull origin master	
     ```
 
 - Document
