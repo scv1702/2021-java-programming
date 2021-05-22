@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,8 +26,8 @@ public class Main {
 	public static JFrame frame;
 	public static JButton UpdatePlanbtn;
 	
-	// 테스트1
-	// 이윤서 바보
+	// �뀒�뒪�듃1
+	// �씠�쑄�꽌 諛붾낫
 
 	/* Create the application. */
 	public Main() {
@@ -60,7 +61,7 @@ public class Main {
 
 		JButton plangoToMenubtn = new JButton("");
 		JButton AddPlanbtn = new JButton("");
-		JButton goToMenu = new JButton("당신의 하루를 함께하는 비서, Kaily.");
+		JButton goToMenu = new JButton("�떦�떊�쓽 �븯猷⑤�� �븿猿섑븯�뒗 鍮꾩꽌, Kaily.");
 		JButton Planbtn = new JButton("");
 		JButton Trackerbtn = new JButton("");
 		JButton Moodbtn = new JButton("");
@@ -76,6 +77,7 @@ public class Main {
 		JButton Backbtn = new JButton("");
 		JButton Playbtn = new JButton("");
 		JButton Forwardbtn = new JButton("");
+		JButton selectMonthbtn = new JButton("");
 		
 		AddPlanbtn.setIcon(new ImageIcon("./data/images/Icon/Add.png"));
 		Planbtn.setIcon(new ImageIcon("./data/images/Icon/Plan.png"));
@@ -162,7 +164,7 @@ public class Main {
 				menuPanel.setVisible(true);
 			}		
 		});
-		goToMenu.setFont(new Font("나눔손글씨 가람연꽃", Font.PLAIN, 24));
+		goToMenu.setFont(new Font("�굹�닎�넀湲��뵪 媛��엺�뿰苑�", Font.PLAIN, 24));
 		
 		Planbtn.setBorderPainted(false);
 
@@ -359,12 +361,12 @@ public class Main {
 					
 					for (Day d : DB.dayDB) {
 						text += DB.searchScheduleList(d);
-						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family: 나눔손글씨 가람연꽃; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
+						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family: �굹�닎�넀湲��뵪 媛��엺�뿰苑�; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p><hr align='left' width ='200px'></p>", 0, 0, null);
 						for (Schedule s : DB.searchScheduleList(d).scheduleList) {
 							String output = String.format("%02d : %02d ~ %02d : %02d %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent());
 							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='6px'> <br> </font>", 0, 0, null);
-							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p style='font-family: 나눔손글씨 가람연꽃; font-size: 20px; color: black;'>" + output + "</p>", 0, 0, null);
+							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p style='font-family: �굹�닎�넀湲��뵪 媛��엺�뿰苑�; font-size: 20px; color: black;'>" + output + "</p>", 0, 0, null);
 						}
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='20px'><br><br><br></font>", 0, 0, null);
 						Util.makeMp3(text, "schedule");
@@ -378,6 +380,28 @@ public class Main {
 		});
 		
 		frame.pack();
+		
+		// Mood page 달력 추가
+		Calendar date = Calendar.getInstance();
+		int year = date.get(Calendar.YEAR);
+	    int month = date.get(Calendar.MONTH) + 1;
+		
+		selectMonthbtn.setText(Integer.toString(year));
+		selectMonthbtn.setText(Integer.toString(month));
+		selectMonthbtn.setBounds(1120, 22, 100, 46);
+		selectMonthbtn.setBorderPainted(false);
+		selectMonthbtn.setContentAreaFilled(false);
+		MoodPanel.add(selectMonthbtn);
+		
+		selectMonthbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MakeSelectMonthFrame(80);
+			}
+		});
+
+		selectMonthbtn.setFont(new Font("나눔고딕", Font.BOLD, 25));
+		
 	}
 }
 
