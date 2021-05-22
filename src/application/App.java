@@ -6,6 +6,7 @@ import java.io.IOException;
 public class App {
 	/* Launch the application */
 	public static void main(String[] args) throws IOException {
+		// 신찬규
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
