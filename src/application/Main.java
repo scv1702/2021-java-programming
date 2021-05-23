@@ -7,12 +7,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.awt.GridLayout;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.Calendar;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.border.Border;
@@ -26,8 +31,10 @@ public class Main {
 	public static JFrame frame;
 	public static JButton UpdatePlanbtn;
 	
-	// �뀒�뒪�듃1
-	// �씠�쑄�꽌 諛붾낫
+	// Mood Calendar
+	static Calendar date = Calendar.getInstance();
+	static int yearMood = date.get(Calendar.YEAR);
+    static int monthMood = date.get(Calendar.MONTH) + 1;
 
 	/* Create the application. */
 	public Main() {
@@ -77,7 +84,6 @@ public class Main {
 		JButton Backbtn = new JButton("");
 		JButton Playbtn = new JButton("");
 		JButton Forwardbtn = new JButton("");
-		JButton selectMonthbtn = new JButton("");
 		
 		AddPlanbtn.setIcon(new ImageIcon("./data/images/Icon/Add.png"));
 		Planbtn.setIcon(new ImageIcon("./data/images/Icon/Plan.png"));
@@ -108,7 +114,7 @@ public class Main {
 //		Deletebtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/delete.png"));
 //		Backbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/back.png"));
 //		Forwardbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/fast-forward.png"));
-//		UpdatePlanbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Update.png"));
+//		UpdatePlanbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Update.png"));		
 		
 		menuPanel.setVisible(false);
 		MoodPanel.setVisible(false);
@@ -381,16 +387,89 @@ public class Main {
 		
 		frame.pack();
 		
-		// Mood page 달력 추가
-		Calendar date = Calendar.getInstance();
-		int year = date.get(Calendar.YEAR);
-	    int month = date.get(Calendar.MONTH) + 1;
+		// Mood page Add Calendar (button, label)    
+	    JLabel yearLB = new JLabel(Integer.toString(yearMood));
+	    JLabel monthLB = new JLabel();
+	    if(monthMood-10 < 0) {
+	    	monthLB.setText("0"+Integer.toString(monthMood));	
+	    }
+	    else {
+	    	monthLB.setText(Integer.toString(monthMood));
+	    }
+	    
+	    JButton prevMonthBtn = new JButton("◀");
+	    JButton nextMonthBtn = new JButton("▶");
+	    
+	    yearLB.setBounds(1127, 22, 100, 46);
+	    yearLB.setFont(new Font("나눔고딕", Font.BOLD, 15));
+	    
+	    monthLB.setBounds(1126, 50, 50, 46);
+	    monthLB.setFont(new Font("나눔고딕", Font.BOLD, 30));
+	    
+	    prevMonthBtn.setBounds(1070, 36, 70, 46);
+	    prevMonthBtn.setBorderPainted(false);
+	    prevMonthBtn.setContentAreaFilled(false);
+	    prevMonthBtn.setFont(new Font("나눔고딕", Font.BOLD, 25));
+	    
+	    nextMonthBtn.setBounds(1147, 36, 70, 46);
+	    nextMonthBtn.setBorderPainted(false);
+	    nextMonthBtn.setContentAreaFilled(false);
+	    nextMonthBtn.setFont(new Font("나눔고딕", Font.BOLD, 25));
 		
-		selectMonthbtn.setText(Integer.toString(year));
-		selectMonthbtn.setText(Integer.toString(month));
+	    MoodPanel.add(yearLB);
+	    MoodPanel.add(monthLB);
+	    MoodPanel.add(prevMonthBtn);
+	    MoodPanel.add(nextMonthBtn);
+	    
+	    prevMonthBtn.addActionListener(new ActionListener() {
+	    	@Override
+	    	public void actionPerformed(ActionEvent e){
+	    		PrevMonth prevMonth = new PrevMonth(yearMood, monthMood);
+	    		
+	    		yearMood = prevMonth.getYear();
+	    		monthMood = prevMonth.getMonth();
+	    		
+	    		yearLB.setText(Integer.toString(yearMood));
+	    		
+	    		if(monthMood-10 < 0) {
+	    	    	monthLB.setText("0"+Integer.toString(monthMood));	
+	    	    }
+	    	    else {
+	    	    	monthLB.setText(Integer.toString(monthMood));
+	    	    }
+                
+            }
+	    });
+	    
+	    nextMonthBtn.addActionListener(new ActionListener() {
+	    	@Override
+	    	public void actionPerformed(ActionEvent e) {
+	    		NextMonth nextMonth = new NextMonth(yearMood, monthMood);
+	    		
+	    		yearMood = nextMonth.getYear();
+	    		monthMood = nextMonth.getMonth();
+	    		
+	    		yearLB.setText(Integer.toString(yearMood));
+	    		
+	    		if(monthMood-10 < 0) {
+	    	    	monthLB.setText("0"+Integer.toString(monthMood));	
+	    	    }
+	    	    else {
+	    	    	monthLB.setText(Integer.toString(monthMood));
+	    	    }
+	    	}
+	    });
+	    
+	    
+	     
+	    /*// setting button (selectMonthbtn)
+	    JButton selectMonthbtn = new JButton("");
+		selectMonthbtn.setText(Integer.toString(month)); // selectMonthbtn.setText(Integer.toString(year));
 		selectMonthbtn.setBounds(1120, 22, 100, 46);
 		selectMonthbtn.setBorderPainted(false);
 		selectMonthbtn.setContentAreaFilled(false);
+		selectMonthbtn.setFont(new Font("나눔고딕", Font.BOLD, 25));
+		
 		MoodPanel.add(selectMonthbtn);
 		
 		selectMonthbtn.addActionListener(new ActionListener() {
@@ -398,9 +477,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				new MakeSelectMonthFrame(80);
 			}
-		});
-
-		selectMonthbtn.setFont(new Font("나눔고딕", Font.BOLD, 25));
+		});*/
 		
 	}
 }
