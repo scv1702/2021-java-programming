@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -68,7 +69,7 @@ public class Main {
 
 		JButton plangoToMenubtn = new JButton("");
 		JButton AddPlanbtn = new JButton("");
-		JButton goToMenu = new JButton("占쎈뼣占쎈뻿占쎌벥 占쎈릭�뙴�뫀占쏙옙 占쎈맙�뙼�꼹釉�占쎈뮉 �뜮袁⑷퐣, Kaily.");
+		JButton goToMenu = new JButton("�뜝�럥堉ｅ뜝�럥六욕뜝�럩踰� �뜝�럥由�占쎈쇀占쎈��뜝�룞�삕 �뜝�럥留숋옙�쇊占쎄섰�뇡占썲뜝�럥裕� 占쎈쑏熬곣뫕�맋, Kaily.");
 		JButton Planbtn = new JButton("");
 		JButton Trackerbtn = new JButton("");
 		JButton Moodbtn = new JButton("");
@@ -170,7 +171,7 @@ public class Main {
 				menuPanel.setVisible(true);
 			}		
 		});
-		goToMenu.setFont(new Font("占쎄돌占쎈땸占쎈�疫뀐옙占쎈뎁 揶쏉옙占쎌뿺占쎈염�땻占�", Font.PLAIN, 24));
+		goToMenu.setFont(new Font("�뜝�럡�룎�뜝�럥�빖�뜝�럥占썹뼨�먯삕�뜝�럥�럞 �뤆�룊�삕�뜝�럩肉뷴뜝�럥�뿼占쎈빝�뜝占�", Font.PLAIN, 24));
 		
 		Planbtn.setBorderPainted(false);
 
@@ -367,12 +368,12 @@ public class Main {
 					
 					for (Day d : DB.dayDB) {
 						text += DB.searchScheduleList(d);
-						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family: 占쎄돌占쎈땸占쎈�疫뀐옙占쎈뎁 揶쏉옙占쎌뿺占쎈염�땻占�; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
+						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family: �뜝�럡�룎�뜝�럥�빖�뜝�럥占썹뼨�먯삕�뜝�럥�럞 �뤆�룊�삕�뜝�럩肉뷴뜝�럥�뿼占쎈빝�뜝占�; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p><hr align='left' width ='200px'></p>", 0, 0, null);
 						for (Schedule s : DB.searchScheduleList(d).scheduleList) {
 							String output = String.format("%02d : %02d ~ %02d : %02d %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent());
 							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='6px'> <br> </font>", 0, 0, null);
-							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p style='font-family: 占쎄돌占쎈땸占쎈�疫뀐옙占쎈뎁 揶쏉옙占쎌뿺占쎈염�땻占�; font-size: 20px; color: black;'>" + output + "</p>", 0, 0, null);
+							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p style='font-family: �뜝�럡�룎�뜝�럥�빖�뜝�럥占썹뼨�먯삕�뜝�럥�럞 �뤆�룊�삕�뜝�럩肉뷴뜝�럥�뿼占쎈빝�뜝占�; font-size: 20px; color: black;'>" + output + "</p>", 0, 0, null);
 						}
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='20px'><br><br><br></font>", 0, 0, null);
 						Util.makeMp3(text, "schedule");
@@ -397,24 +398,24 @@ public class Main {
 	    	monthLB.setText(Integer.toString(monthMood));
 	    }
 	    
-	    JButton prevMonthBtn = new JButton("��");
-	    JButton nextMonthBtn = new JButton("�뼳");
+	    JButton prevMonthBtn = new JButton("◀");
+	    JButton nextMonthBtn = new JButton("▶");
 	    
 	    yearLB.setBounds(1127, 22, 100, 46);
-	    yearLB.setFont(new Font("�굹�닎怨좊뵓", Font.BOLD, 15));
+	    yearLB.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 15));
 	    
 	    monthLB.setBounds(1126, 50, 50, 46);
-	    monthLB.setFont(new Font("�굹�닎怨좊뵓", Font.BOLD, 30));
+	    monthLB.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 30));
 	    
 	    prevMonthBtn.setBounds(1070, 36, 70, 46);
 	    prevMonthBtn.setBorderPainted(false);
 	    prevMonthBtn.setContentAreaFilled(false);
-	    prevMonthBtn.setFont(new Font("�굹�닎怨좊뵓", Font.BOLD, 25));
+	    prevMonthBtn.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 25));
 	    
 	    nextMonthBtn.setBounds(1147, 36, 70, 46);
 	    nextMonthBtn.setBorderPainted(false);
 	    nextMonthBtn.setContentAreaFilled(false);
-	    nextMonthBtn.setFont(new Font("�굹�닎怨좊뵓", Font.BOLD, 25));
+	    nextMonthBtn.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 25));
 		
 	    MoodPanel.add(yearLB);
 	    MoodPanel.add(monthLB);
@@ -432,7 +433,7 @@ public class Main {
 	    		yearLB.setText(Integer.toString(yearMood));
 	    		
 	    		if(monthMood-10 < 0) {
-	    	    	monthLB.setText("0"+Integer.toString(monthMood));	
+	    	    	monthLB.setText("0" + Integer.toString(monthMood));	
 	    	    }
 	    	    else {
 	    	    	monthLB.setText(Integer.toString(monthMood));
@@ -461,42 +462,26 @@ public class Main {
 	    });
 	    
 	    
-	     
-	    /*// setting button (selectMonthbtn)
-	    JButton selectMonthbtn = new JButton("");
-		selectMonthbtn.setText(Integer.toString(month)); // selectMonthbtn.setText(Integer.toString(year));
-		selectMonthbtn.setBounds(1120, 22, 100, 46);
-		selectMonthbtn.setBorderPainted(false);
-		selectMonthbtn.setContentAreaFilled(false);
-		selectMonthbtn.setFont(new Font("�굹�닎怨좊뵓", Font.BOLD, 25));
-		
-		MoodPanel.add(selectMonthbtn);
-		
-		selectMonthbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new MakeSelectMonthFrame(80);
-			}
-		});*/
-	    
 	    Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 	    int month = cal.get(Calendar.MONTH) + 1;
 		int date = cal.get(Calendar.DATE);
-		int lastDay=cal.getActualMaximum(Calendar.DATE);
-		ArrayList<Integer> calArr=new ArrayList<>();
+		int lastDay = cal.getActualMaximum(Calendar.DATE);
+		ArrayList<Integer> calArr = new ArrayList<>();
 		
-		for(int i=0;i<lastDay;i++) {
-			calArr.add(i+1);
+		for(int i = 0; i < lastDay; i++) {
+			calArr.add(i + 1);
 		}
 		
-		
-		int x=300,y=150;
-		for(int i=0;i<calArr.size();i++) {
-			JButton tempbtn=new JButton(calArr.get(i)+"");
-			tempbtn.setBounds(x, y, 100,100);
-			tempbtn.setBorderPainted(true);
+		// Modify Calendar Location, Color Font (Gray)
+		int x = 200, y = 125;
+		for(int i = 0; i < calArr.size(); i++) {
+			JButton tempbtn = new JButton(calArr.get(i) + "");
+			tempbtn.setBounds(x, y, 100, 100);
+			tempbtn.setBorderPainted(false);
 			tempbtn.setContentAreaFilled(false);
+			tempbtn.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.PLAIN, 25));
+			tempbtn.setForeground(new Color(128, 128, 128));
 			MoodPanel.add(tempbtn);
 			
 			tempbtn.addActionListener(new ActionListener() {
@@ -506,10 +491,10 @@ public class Main {
 				}
 			});
 			
-			x+=100;
-			if(i%7==6) {
-				x=300;
-				y+=100;
+			x += 125;
+			if(i % 7 == 6) {
+				x = 200;
+				y += 100;
 			}
 		}
 		
