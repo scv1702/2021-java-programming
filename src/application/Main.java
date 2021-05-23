@@ -318,6 +318,13 @@ public class Main {
 		
 		Deletebtn.setBounds(516, 611, 61, 63);
 		Deletebtn.setBorderPainted(false);
+		Deletebtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new DeletePlan();
+			}	
+		});
+		
 		PlanPanel.add(Deletebtn);
 		
 		Backbtn.setBounds(76, 351, 48, 46);
