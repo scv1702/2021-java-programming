@@ -54,7 +54,7 @@ public class MakeSelectMonthFrame extends JFrame implements ItemListener, Action
         // 창 세팅
         setSize(400, heightSize);
         setVisible(true);
-		setResizable(false); // 사용자 창 크기 조절 방지
+		// setResizable(false); // 사용자 창 크기 조절 방지
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         // 배경색 흰색
