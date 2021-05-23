@@ -11,6 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.JButton;
+import java.awt.Color;
 
 
 public class DeletePlan extends Main {
@@ -40,9 +42,10 @@ public class DeletePlan extends Main {
 				PlanDays[i] = d.toString();
 				ScheduleCnt[i] = DB.searchScheduleList(d).scheduleList.size();
 				j=0;
-				EachDaySchedule[i] = new String[ScheduleCnt[i]];
+				EachDaySchedule[i] = new String[ScheduleCnt[i]+1];
+				EachDaySchedule[i][0] = "Delete ALL";
 				for (Schedule s : DB.searchScheduleList(d).scheduleList) {
-					EachDaySchedule[i][j] = String.format("%02d : %02d ~ %02d : %02d  %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent());
+					EachDaySchedule[i][j+1] = String.format("%02d : %02d ~ %02d : %02d  %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent());
 					j++;
 				}
 				i++;
@@ -80,6 +83,11 @@ public class DeletePlan extends Main {
 		DeleteFrame.setSize(AddPlanPanel.getDim());
 		DeleteFrame.setPreferredSize(AddPlanPanel.getDim());
 		DeleteFrame.getContentPane().add(AddPlanPanel);
+		
+		JButton DeletePlanbtn = new JButton("Delete");
+		DeletePlanbtn.setBackground(Color.ORANGE);
+		DeletePlanbtn.setBounds(438, 18, 84, 29);
+		AddPlanPanel.add(DeletePlanbtn);
 		DeleteFrame.setLocationRelativeTo(null);
 
 
