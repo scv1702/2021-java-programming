@@ -31,7 +31,7 @@ import java.util.*;
 public class EmotionFrame extends JFrame {
 	
 	public EmotionFrame() {
-		Font font = new Font("³ª´®°íµñ", Font.PLAIN, 20);
+		Font font = new Font("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 20);
 		JFrame frm=new JFrame("Emotion");
 		frm.setSize(500,400);
 		frm.setLocationRelativeTo(null);
@@ -65,6 +65,14 @@ public class EmotionFrame extends JFrame {
 			ImageIcon tempicon=new ImageIcon(change);
 			btn[i].setIcon(tempicon);
 		}
+		
+		btn[0].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frm.dispose();
+			}
+			
+		});
 		
 		frm.setVisible(true);
 	    

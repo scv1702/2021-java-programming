@@ -73,7 +73,6 @@ public class Main {
 		JButton Planbtn = new JButton("");
 		JButton Trackerbtn = new JButton("");
 		JButton Moodbtn = new JButton("");
-		JButton moodgoToMenubtn = new JButton("");
 		JButton trackergoToMenubtn = new JButton("");
 		JButton goToDailyTrackerbtn = new JButton("");
 		JButton goToMonthlyTracker = new JButton("");
@@ -100,14 +99,14 @@ public class Main {
 //		ImageIcon clickMood = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Mood_click_line.png");
 //		ImagePanel startPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_start.png").getImage());
 //		ImagePanel menuPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_menu.png").getImage());
-//		ImagePanel MoodPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/MoodPanel.png").getImage());
 //		ImagePanel TrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/TrackerPanel.png").getImage());
 //		ImagePanel monthlyTrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_monthly_panel.png").getImage());
 //		ImagePanel dailyTrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_daily_panel.png").getImage());
 //		ImagePanel PlanPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/PlanPanel.png").getImage());
 //		ImageIcon PlayIcon = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/play.png");
 //		ImageIcon PauseIcon = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Pause.png");
-		
+//		ImagePanel MoodPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/MoodPanel.png").getImage());
+//		
 //		AddPlanbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Add.png"));
 //		Planbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Plan.png"));
 //		Trackerbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Tracker.png"));
@@ -118,12 +117,104 @@ public class Main {
 //		UpdatePlanbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Update.png"));		
 		
 		menuPanel.setVisible(false);
-		MoodPanel.setVisible(false);
 		TrackerPanel.setVisible(false);
 		monthlyTrackerPanel.setVisible(false);
 		dailyTrackerPanel.setVisible(false);
 		
 		PlanPanel.setVisible(false);
+		JButton moodgoToMenubtn = new JButton("");
+		
+		MoodPanel.setVisible(false);
+		frame.getContentPane().add(MoodPanel);
+		
+		moodgoToMenubtn.setBounds(1214, 22, 48, 46);
+		moodgoToMenubtn.setBorderPainted(false);
+		moodgoToMenubtn.setContentAreaFilled(false);
+		MoodPanel.add(moodgoToMenubtn);
+		
+		moodgoToMenubtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MoodPanel.setVisible(false);
+				menuPanel.setVisible(true);
+			}	
+		});
+		
+		// Mood page Add Calendar (button, label)    
+	    JLabel yearLB = new JLabel(Integer.toString(yearMood));
+	    JLabel monthLB = new JLabel();
+	    
+	    JButton prevMonthBtn = new JButton("◀");
+	    JButton nextMonthBtn = new JButton("▶");
+	    
+	    yearLB.setBounds(1127, 22, 100, 46);
+	    yearLB.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 15));
+	    
+	    monthLB.setBounds(1126, 50, 50, 46);
+	    monthLB.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 30));
+	    
+	    prevMonthBtn.setBounds(1070, 36, 70, 46);
+	    prevMonthBtn.setBorderPainted(false);
+	    prevMonthBtn.setContentAreaFilled(false);
+	    prevMonthBtn.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 25));
+	    
+	    nextMonthBtn.setBounds(1147, 36, 70, 46);
+	    nextMonthBtn.setBorderPainted(false);
+	    nextMonthBtn.setContentAreaFilled(false);
+	    nextMonthBtn.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 25));
+	    
+	    MoodPanel.add(yearLB);
+	    MoodPanel.add(monthLB);
+	    MoodPanel.add(prevMonthBtn);
+	    MoodPanel.add(nextMonthBtn);
+	    
+	    JPanel panel = new JPanel();
+	    panel.setBounds(169, 124, 840, 381);
+	    MoodPanel.add(panel);
+	    panel.setLayout(null);
+	    
+	    JButton dayByn_21 = new JButton("New button");
+	    dayByn_21.setBounds(578, 63, 107, 114);
+	    panel.add(dayByn_21);
+	    
+	    prevMonthBtn.addActionListener(new ActionListener() {
+	    	@Override
+	    	public void actionPerformed(ActionEvent e){
+	    		PrevMonth prevMonth = new PrevMonth(yearMood, monthMood);
+	    		
+	    		yearMood = prevMonth.getYear();
+	    		monthMood = prevMonth.getMonth();
+	    		
+	    		yearLB.setText(Integer.toString(yearMood));
+	    		
+	    		if(monthMood-10 < 0) {
+	    	    	monthLB.setText("0" + Integer.toString(monthMood));	
+	    	    }
+	    	    else {
+	    	    	monthLB.setText(Integer.toString(monthMood));
+	    	    }
+                
+            }
+	    });
+	    
+	    nextMonthBtn.addActionListener(new ActionListener() {
+	    	@Override
+	    	public void actionPerformed(ActionEvent e) {
+	    		NextMonth nextMonth = new NextMonth(yearMood, monthMood);
+	    		
+	    		yearMood = nextMonth.getYear();
+	    		monthMood = nextMonth.getMonth();
+	    		
+	    		yearLB.setText(Integer.toString(yearMood));
+	    		
+	    		if(monthMood-10 < 0) {
+	    	    	monthLB.setText("0"+Integer.toString(monthMood));	
+	    	    }
+	    	    else {
+	    	    	monthLB.setText(Integer.toString(monthMood));
+	    	    }
+	    	}
+	    });
 		frame.getContentPane().add(PlanPanel);
 		PlanPanel.setLayout(null);
 		
@@ -153,7 +244,6 @@ public class Main {
 
 		frame.getContentPane().add(startPanel);
 		frame.getContentPane().add(menuPanel);
-		frame.getContentPane().add(MoodPanel);
 		frame.getContentPane().add(TrackerPanel);
 		frame.getContentPane().add(dailyTrackerPanel);
 		frame.getContentPane().add(monthlyTrackerPanel);
@@ -213,19 +303,6 @@ public class Main {
 				menuPanel.setVisible(false);
 				MoodPanel.setVisible(true);
 			}
-		});
-		
-		moodgoToMenubtn.setBounds(1214, 22, 48, 46);
-		moodgoToMenubtn.setBorderPainted(false);
-		moodgoToMenubtn.setContentAreaFilled(false);
-		MoodPanel.add(moodgoToMenubtn);
-		
-		moodgoToMenubtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MoodPanel.setVisible(false);
-				menuPanel.setVisible(true);
-			}	
 		});
 		
 		trackergoToMenubtn.setBounds(1213, 23, 48, 46);
@@ -394,79 +471,12 @@ public class Main {
 		});
 		
 		frame.pack();
-		
-		// Mood page Add Calendar (button, label)    
-	    JLabel yearLB = new JLabel(Integer.toString(yearMood));
-	    JLabel monthLB = new JLabel();
 	    if(monthMood-10 < 0) {
 	    	monthLB.setText("0"+Integer.toString(monthMood));	
 	    }
 	    else {
 	    	monthLB.setText(Integer.toString(monthMood));
 	    }
-	    
-	    JButton prevMonthBtn = new JButton("◀");
-	    JButton nextMonthBtn = new JButton("▶");
-	    
-	    yearLB.setBounds(1127, 22, 100, 46);
-	    yearLB.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 15));
-	    
-	    monthLB.setBounds(1126, 50, 50, 46);
-	    monthLB.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 30));
-	    
-	    prevMonthBtn.setBounds(1070, 36, 70, 46);
-	    prevMonthBtn.setBorderPainted(false);
-	    prevMonthBtn.setContentAreaFilled(false);
-	    prevMonthBtn.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 25));
-	    
-	    nextMonthBtn.setBounds(1147, 36, 70, 46);
-	    nextMonthBtn.setBorderPainted(false);
-	    nextMonthBtn.setContentAreaFilled(false);
-	    nextMonthBtn.setFont(new Font("占쎄돌占쎈땸�⑥쥓逾�", Font.BOLD, 25));
-		
-	    MoodPanel.add(yearLB);
-	    MoodPanel.add(monthLB);
-	    MoodPanel.add(prevMonthBtn);
-	    MoodPanel.add(nextMonthBtn);
-	    
-	    prevMonthBtn.addActionListener(new ActionListener() {
-	    	@Override
-	    	public void actionPerformed(ActionEvent e){
-	    		PrevMonth prevMonth = new PrevMonth(yearMood, monthMood);
-	    		
-	    		yearMood = prevMonth.getYear();
-	    		monthMood = prevMonth.getMonth();
-	    		
-	    		yearLB.setText(Integer.toString(yearMood));
-	    		
-	    		if(monthMood-10 < 0) {
-	    	    	monthLB.setText("0" + Integer.toString(monthMood));	
-	    	    }
-	    	    else {
-	    	    	monthLB.setText(Integer.toString(monthMood));
-	    	    }
-                
-            }
-	    });
-	    
-	    nextMonthBtn.addActionListener(new ActionListener() {
-	    	@Override
-	    	public void actionPerformed(ActionEvent e) {
-	    		NextMonth nextMonth = new NextMonth(yearMood, monthMood);
-	    		
-	    		yearMood = nextMonth.getYear();
-	    		monthMood = nextMonth.getMonth();
-	    		
-	    		yearLB.setText(Integer.toString(yearMood));
-	    		
-	    		if(monthMood-10 < 0) {
-	    	    	monthLB.setText("0"+Integer.toString(monthMood));	
-	    	    }
-	    	    else {
-	    	    	monthLB.setText(Integer.toString(monthMood));
-	    	    }
-	    	}
-	    });
 	    
 	    
 	    Calendar cal = Calendar.getInstance();
