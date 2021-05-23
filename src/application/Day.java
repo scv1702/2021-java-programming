@@ -10,7 +10,7 @@ public class Day implements Comparable<Day> {
 		this.year = year;
 		this.month = month;
 		this.day = day;
-		this.dateTime = String.format("%s-%s-%s", year, month, day);
+		this.dateTime = String.format("%d-%02d-%02d", year, month, day);
 	}
 	
 	public Day() {

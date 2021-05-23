@@ -9,6 +9,8 @@ public class Schedule implements Comparable<Schedule> {
     
     private int finishHour;
     private int finishMin;
+    
+    private int ID;
 
     public Schedule(String content, int startHour, int startMin, int finishHour, int finishMin) {
         this.content = content;

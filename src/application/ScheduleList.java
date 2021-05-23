@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.net.URLEncoder;
 
 public class ScheduleList {
+	public static int id = 1;
+	
 	public Day startDay;
 
     private String text;
