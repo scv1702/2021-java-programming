@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.awt.GridLayout;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -43,19 +44,28 @@ public class EmotionFrame extends JFrame {
 		lab.setFont(font);
 		frm.getContentPane().add(lab);
 		JButton [] btn= {new JButton(),new JButton(),new JButton(),new JButton(),new JButton(),new JButton()};
-		int x=100;
+		int x=75;
 		int y=100;
 		for(int i=0;i<btn.length;i++) {
 			btn[i].setBounds(x, y, 100, 100);
-			btn[i].setBorderPainted(true);
+			btn[i].setBorderPainted(false);
 			btn[i].setContentAreaFilled(false);
 			frm.getContentPane().add(btn[i]);
-			x+=100;
+			x+=130;
 			if(i%3==2) {
-				y+=100;
-				x=100;
+				y+=120;
+				x=75;
 			}
 		}
+		ImageIcon[] img= {new ImageIcon("./data/images/mood/happy.png"),new ImageIcon("./data/images/mood/good.png"),new ImageIcon("./data/images/mood/tired.png"),
+						  new ImageIcon("./data/images/mood/bad.png"),new ImageIcon("./data/images/mood/sad.png"),new ImageIcon("./data/images/mood/sick.png")};
+		for(int i=0;i<img.length;i++) {
+			Image temp=img[i].getImage();
+			Image change=temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+			ImageIcon tempicon=new ImageIcon(change);
+			btn[i].setIcon(tempicon);
+		}
+		
 		frm.setVisible(true);
 	    
 	}
