@@ -1,30 +1,28 @@
 package application;
 
-import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.JButton;
-import java.awt.Color;
 
 
 public class DeletePlan extends Main {
-	
 	JFrame DeleteFrame = new JFrame();
 	public static String[][] EachDaySchedule;
-	public int SelectIndex;
+	public String selectedDay;
+	public int selectedID;
 	
 	public DeletePlan() {
-		
-		
-		
 		DeleteFrame.setTitle("Delete your Plan");
 		DeleteFrame.setVisible(true);
 		DeleteFrame.setResizable(false);
@@ -36,12 +34,12 @@ public class DeletePlan extends Main {
 		EachDaySchedule = new String[DB.dayDB.size()][];
 		
 		try {
-			int i=0;
+			int i = 0;
 			int j;
 			for (Day d : DB.dayDB) {
 				PlanDays[i] = d.toString();
 				ScheduleCnt[i] = DB.searchScheduleList(d).scheduleList.size();
-				j=0;
+				j = 0;
 				EachDaySchedule[i] = new String[ScheduleCnt[i]+1];
 				EachDaySchedule[i][0] = "Delete ALL";
 				for (Schedule s : DB.searchScheduleList(d).scheduleList) {
@@ -49,9 +47,7 @@ public class DeletePlan extends Main {
 					j++;
 				}
 				i++;
-				
 			}
-    
 		} catch (Exception e1) {
 			System.out.println(e1);
 		}
@@ -89,24 +85,32 @@ public class DeletePlan extends Main {
 		DeletePlanbtn.setBounds(438, 18, 84, 29);
 		AddPlanPanel.add(DeletePlanbtn);
 		DeleteFrame.setLocationRelativeTo(null);
-
+		
+		DeletePlanbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectedDay = (String) DayList.getSelectedValue();
+				selectedID = PlanList.getSelectedIndex();
+				DB.deleteScheduleFromDB(selectedDay, selectedID);
+				DeleteFrame.dispose();
+			}
+		});
 
 		DayList.addListSelectionListener(new ListSelectionListener() {
-
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				SelectIndex = DayList.getSelectedIndex();
-				PlanList.setListData(EachDaySchedule[SelectIndex]);
-				
+				PlanList.setListData(EachDaySchedule[DayList.getSelectedIndex()]);
 			}
-			
 		});
 		
-		
-		
-		
-		
-		
-		
-	}	
+		PlanList.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+			}
+		});
+	}
 }
+	
+	
+	
+	

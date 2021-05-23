@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 import java.io.PrintWriter;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.io.IOException;
 
 import java.io.FileFilter;
@@ -85,5 +88,42 @@ public class DB {
 		sortScheduleList(sl.scheduleList);
 		
 		return sl;
+	}
+	
+	public static void deleteScheduleFromDB(String selectedDay, int selectedID) {
+		Date date;
+		String fileName;
+		String path = "./data/schedule/";
+		String dummy = "";
+		String line;
+		
+		try {
+			date = new SimpleDateFormat("yyyy년 MM월 dd일").parse(selectedDay);
+			fileName = new SimpleDateFormat("yyyy-MM-dd").format(date);
+			path += fileName + ".txt";
+			File file = new File(path);
+
+			if (selectedID == 0) {
+				file.delete();
+				return ;
+			}
+			
+			BufferedReader br = new BufferedReader(new FileReader(path));
+			for (int i = 1; i < selectedID; i++) {
+				line = br.readLine();
+				dummy += line + "\r\n";
+			}
+			
+			br.readLine();
+			
+			while((line = br.readLine()) != null) {
+				dummy += line + "\r\n"; 
+			}
+			
+			FileWriter fw = new FileWriter(path);
+			fw.write(dummy);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 }
