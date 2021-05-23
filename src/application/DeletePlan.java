@@ -78,8 +78,8 @@ public class DeletePlan extends Main {
 		PlanList.setBorder(null);
 		DeleteFrame.getContentPane().add(SelectPlanPanel);
 		
-		//ImagePanel AddPlanPanel = new ImagePanel(new ImageIcon(new File("./data/images/panel_page/DeletePanel.png").getAbsolutePath()).getImage());
-		ImagePanel AddPlanPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/DeletePanel.png").getImage());
+		ImagePanel AddPlanPanel = new ImagePanel(new ImageIcon(new File("./data/images/panel_page/DeletePanel.png").getAbsolutePath()).getImage());
+//		ImagePanel AddPlanPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/DeletePanel.png").getImage());
 		DeleteFrame.setSize(AddPlanPanel.getDim());
 		DeleteFrame.setPreferredSize(AddPlanPanel.getDim());
 		DeleteFrame.getContentPane().add(AddPlanPanel);
