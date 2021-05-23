@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Calendar;
 import java.util.Scanner;
-
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -68,7 +68,7 @@ public class Main {
 
 		JButton plangoToMenubtn = new JButton("");
 		JButton AddPlanbtn = new JButton("");
-		JButton goToMenu = new JButton("�떦�떊�쓽 �븯猷⑤�� �븿猿섑븯�뒗 鍮꾩꽌, Kaily.");
+		JButton goToMenu = new JButton("占쎈뼣占쎈뻿占쎌벥 占쎈릭�뙴�뫀占쏙옙 占쎈맙�뙼�꼹釉�占쎈뮉 �뜮袁⑷퐣, Kaily.");
 		JButton Planbtn = new JButton("");
 		JButton Trackerbtn = new JButton("");
 		JButton Moodbtn = new JButton("");
@@ -170,7 +170,7 @@ public class Main {
 				menuPanel.setVisible(true);
 			}		
 		});
-		goToMenu.setFont(new Font("�굹�닎�넀湲��뵪 媛��엺�뿰苑�", Font.PLAIN, 24));
+		goToMenu.setFont(new Font("占쎄돌占쎈땸占쎈�疫뀐옙占쎈뎁 揶쏉옙占쎌뿺占쎈염�땻占�", Font.PLAIN, 24));
 		
 		Planbtn.setBorderPainted(false);
 
@@ -367,12 +367,12 @@ public class Main {
 					
 					for (Day d : DB.dayDB) {
 						text += DB.searchScheduleList(d);
-						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family: �굹�닎�넀湲��뵪 媛��엺�뿰苑�; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
+						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family: 占쎄돌占쎈땸占쎈�疫뀐옙占쎈뎁 揶쏉옙占쎌뿺占쎈염�땻占�; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p><hr align='left' width ='200px'></p>", 0, 0, null);
 						for (Schedule s : DB.searchScheduleList(d).scheduleList) {
 							String output = String.format("%02d : %02d ~ %02d : %02d %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent());
 							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='6px'> <br> </font>", 0, 0, null);
-							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p style='font-family: �굹�닎�넀湲��뵪 媛��엺�뿰苑�; font-size: 20px; color: black;'>" + output + "</p>", 0, 0, null);
+							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p style='font-family: 占쎄돌占쎈땸占쎈�疫뀐옙占쎈뎁 揶쏉옙占쎌뿺占쎈염�땻占�; font-size: 20px; color: black;'>" + output + "</p>", 0, 0, null);
 						}
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='20px'><br><br><br></font>", 0, 0, null);
 						Util.makeMp3(text, "schedule");
@@ -397,24 +397,24 @@ public class Main {
 	    	monthLB.setText(Integer.toString(monthMood));
 	    }
 	    
-	    JButton prevMonthBtn = new JButton("◀");
-	    JButton nextMonthBtn = new JButton("▶");
+	    JButton prevMonthBtn = new JButton("��");
+	    JButton nextMonthBtn = new JButton("�뼳");
 	    
 	    yearLB.setBounds(1127, 22, 100, 46);
-	    yearLB.setFont(new Font("나눔고딕", Font.BOLD, 15));
+	    yearLB.setFont(new Font("�굹�닎怨좊뵓", Font.BOLD, 15));
 	    
 	    monthLB.setBounds(1126, 50, 50, 46);
-	    monthLB.setFont(new Font("나눔고딕", Font.BOLD, 30));
+	    monthLB.setFont(new Font("�굹�닎怨좊뵓", Font.BOLD, 30));
 	    
 	    prevMonthBtn.setBounds(1070, 36, 70, 46);
 	    prevMonthBtn.setBorderPainted(false);
 	    prevMonthBtn.setContentAreaFilled(false);
-	    prevMonthBtn.setFont(new Font("나눔고딕", Font.BOLD, 25));
+	    prevMonthBtn.setFont(new Font("�굹�닎怨좊뵓", Font.BOLD, 25));
 	    
 	    nextMonthBtn.setBounds(1147, 36, 70, 46);
 	    nextMonthBtn.setBorderPainted(false);
 	    nextMonthBtn.setContentAreaFilled(false);
-	    nextMonthBtn.setFont(new Font("나눔고딕", Font.BOLD, 25));
+	    nextMonthBtn.setFont(new Font("�굹�닎怨좊뵓", Font.BOLD, 25));
 		
 	    MoodPanel.add(yearLB);
 	    MoodPanel.add(monthLB);
@@ -468,7 +468,7 @@ public class Main {
 		selectMonthbtn.setBounds(1120, 22, 100, 46);
 		selectMonthbtn.setBorderPainted(false);
 		selectMonthbtn.setContentAreaFilled(false);
-		selectMonthbtn.setFont(new Font("나눔고딕", Font.BOLD, 25));
+		selectMonthbtn.setFont(new Font("�굹�닎怨좊뵓", Font.BOLD, 25));
 		
 		MoodPanel.add(selectMonthbtn);
 		
@@ -478,6 +478,40 @@ public class Main {
 				new MakeSelectMonthFrame(80);
 			}
 		});*/
+	    
+	    Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+	    int month = cal.get(Calendar.MONTH) + 1;
+		int date = cal.get(Calendar.DATE);
+		int lastDay=cal.getActualMaximum(Calendar.DATE);
+		ArrayList<Integer> calArr=new ArrayList<>();
+		
+		for(int i=0;i<lastDay;i++) {
+			calArr.add(i+1);
+		}
+		
+		
+		int x=300,y=150;
+		for(int i=0;i<calArr.size();i++) {
+			JButton tempbtn=new JButton(calArr.get(i)+"");
+			tempbtn.setBounds(x, y, 100,100);
+			tempbtn.setBorderPainted(true);
+			tempbtn.setContentAreaFilled(false);
+			MoodPanel.add(tempbtn);
+			
+			tempbtn.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new EmotionFrame();
+				}
+			});
+			
+			x+=100;
+			if(i%7==6) {
+				x=300;
+				y+=100;
+			}
+		}
 		
 	}
 }
