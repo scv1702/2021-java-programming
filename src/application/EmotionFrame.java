@@ -30,51 +30,119 @@ import java.util.*;
 
 public class EmotionFrame extends JFrame {
 	
+	// int selectMood = -1;
+	
 	public EmotionFrame() {
-		Font font = new Font("�������", Font.PLAIN, 20);
-		JFrame frm=new JFrame("Emotion");
-		frm.setSize(500,400);
+		Font font = new Font("占쏙옙占쏙옙占쏙옙占�", Font.PLAIN, 20);
+		JFrame frm = new JFrame("Emotion");
+		frm.setSize(500, 400);
 		frm.setLocationRelativeTo(null);
 		frm.getContentPane().setLayout(null);
 		frm.setResizable(false);
 		frm.getContentPane().setBackground(Color.WHITE);
-		JLabel lab=new JLabel();
+		JLabel lab = new JLabel();
 		lab.setBounds(170,20,500,50);
 		lab.setText("Emotion selection");
 		lab.setFont(font);
 		frm.getContentPane().add(lab);
-		JButton [] btn= {new JButton(),new JButton(),new JButton(),new JButton(),new JButton(),new JButton()};
-		int x=75;
-		int y=100;
-		for(int i=0;i<btn.length;i++) {
-			btn[i].setBounds(x, y, 100, 100);
+		JButton [] btn = {new JButton(), new JButton(), new JButton(), new JButton(), new JButton(), new JButton()};
+		int x = 75;
+		int y = 100;
+		for(int i = 0; i < btn.length; i++) {
+		btn[i].setBounds(x, y, 100, 100);
 			btn[i].setBorderPainted(false);
 			btn[i].setContentAreaFilled(false);
 			frm.getContentPane().add(btn[i]);
-			x+=130;
-			if(i%3==2) {
-				y+=120;
-				x=75;
+			x += 130;
+			if(i % 3 == 2) {
+				y += 120;
+				x = 75;
 			}
 		}
-		ImageIcon[] img= {new ImageIcon("./data/images/mood/happy.png"),new ImageIcon("./data/images/mood/good.png"),new ImageIcon("./data/images/mood/tired.png"),
-						  new ImageIcon("./data/images/mood/bad.png"),new ImageIcon("./data/images/mood/sad.png"),new ImageIcon("./data/images/mood/sick.png")};
-		for(int i=0;i<img.length;i++) {
-			Image temp=img[i].getImage();
-			Image change=temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-			ImageIcon tempicon=new ImageIcon(change);
+		ImageIcon[] img= {new ImageIcon("./data/images/mood/happy.png"), new ImageIcon("./data/images/mood/good.png"), new ImageIcon("./data/images/mood/tired.png"),
+						  new ImageIcon("./data/images/mood/bad.png"), new ImageIcon("./data/images/mood/sad.png"), new ImageIcon("./data/images/mood/sick.png")};
+		
+		for(int i = 0; i < img.length; i++) {
+			Image temp = img[i].getImage();
+			Image change = temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+			ImageIcon tempicon = new ImageIcon(change);
 			btn[i].setIcon(tempicon);
 		}
 		
+		// happy
 		btn[0].addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// selectMood = 0;
 				frm.dispose();
 			}
 			
 		});
 		
+		// good
+		btn[1].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// selectMood = 1;
+				
+				frm.dispose();				
+			}
+			
+		});
+		
+		// tired
+		btn[2].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frm.dispose();
+				
+				// selectMood = 2;
+			}
+			
+		});
+		
+		// bad
+		btn[3].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frm.dispose();
+				
+				// selectMood = 3;
+			}
+			
+		});
+		
+		// sad
+		btn[4].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frm.dispose();
+				
+				// selectMood = 4;
+			}
+			
+		});
+		
+		// sick
+		btn[5].addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// selectMood = 5;
+				
+				frm.dispose();
+			}
+			
+		});
+		
+		
 		frm.setVisible(true);
 	    
 	}
+	
 }

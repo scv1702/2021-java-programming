@@ -14,12 +14,8 @@ public class PrevMonth {
 	}
 	
 	void changedMonth() {
-		if (month == 1) {
-			year--;
-	        month = 12;
-	    }
-	    else {
-	        month--;
+		if (month != 1) {
+			month--;
 	    }
 		
 	}
