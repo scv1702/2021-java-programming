@@ -13,12 +13,8 @@ public class NextMonth {
 	}
 	
 	void changedMonth() {
-		if(month == 12) {
-            year++;
-            month = 1;
-        }
-        else {
-            month++;
+		if(month != 12) {
+			month++;
         }
     }
 	
