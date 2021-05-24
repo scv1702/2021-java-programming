@@ -57,7 +57,7 @@ public class DB {
 	public static void addScheduleToDB(Day day, Schedule schedule) throws IOException {
 		String path = "./data/schedule/" + day.getDateTime() + ".txt";
 		PrintWriter pw = new PrintWriter(new FileWriter(path, true));
-		String output = String.format("%d %d %d %d %s %s", schedule.getStartHour(), schedule.getStartMin(), schedule.getFinishHour(), schedule.getFinishMin(), schedule.getContent(), schedule.getTag());
+		String output = String.format("%d, %d, %d, %d, %s, %s", schedule.getStartHour(), schedule.getStartMin(), schedule.getFinishHour(), schedule.getFinishMin(), schedule.getContent(), schedule.getTag());
 		pw.println(output);
 		pw.flush();
 	}
@@ -72,7 +72,7 @@ public class DB {
 			
 			if (line == null) break;
 			
-			String[] lineSubStr = line.split(" ");
+			String[] lineSubStr = line.split(", ");
 			
 			int startHour = Integer.parseInt(lineSubStr[0]);
 			int startMin = Integer.parseInt(lineSubStr[1]);
