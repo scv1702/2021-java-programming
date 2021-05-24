@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 public class MakeAddPlanFrame extends Main {
+	String SelectTag;
 	JFrame AddPlanFrame = new JFrame();
 
 	private JTextField planName;
@@ -181,12 +182,11 @@ public class MakeAddPlanFrame extends Main {
 		
 		// Make Tag
 		ButtonGroup TagGroup = new ButtonGroup();
-		String[] TagName = {"School", "Exam", "Meal", "Appointment","ETC."};
+		String[] TagName = {"School", "Exam", "Meal", "Appointment","ETC"};
 		JRadioButton TagBtn[] = new JRadioButton[5];	
 		
 		class MyItemListener implements ItemListener {
 		    public void itemStateChanged(ItemEvent e) {
-		    	 String SelectTag;
 		         if (e.getStateChange() == ItemEvent.DESELECTED)
 		              return; 
 		         if (TagBtn[0].isSelected())
@@ -232,7 +232,7 @@ public class MakeAddPlanFrame extends Main {
 				int _finishMin = Integer.parseInt(finishMin.getText());
 
 				try {
-					DB.addScheduleToDB(new Day(_year, _month, _day), new Schedule(_content, _startHour, _startMin, _finishHour, _finishMin));
+					DB.addScheduleToDB(new Day(_year, _month, _day), new Schedule(_content, SelectTag, _startHour, _startMin, _finishHour, _finishMin));
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
