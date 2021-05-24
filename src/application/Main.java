@@ -1046,7 +1046,7 @@ public class Main {
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family:  뜝 럡 룎 뜝 럥 빖 뜝 럥占썹뼨 먯삕 뜝 럥 럞  뤆 룊 삕 뜝 럩肉뷴뜝 럥 뿼占쎈빝 뜝占 ; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p><hr align='left' width ='200px'></p>", 0, 0, null);
 						for (Schedule s : DB.searchScheduleList(d).scheduleList) {
-							String output = String.format("%02d : %02d ~ %02d : %02d %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent());
+							String output = String.format("%02d : %02d ~ %02d : %02d %s %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent(), s.getTag());
 							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='6px'> <br> </font>", 0, 0, null);
 							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p style='font-family:  뜝 럡 룎 뜝 럥 빖 뜝 럥占썹뼨 먯삕 뜝 럥 럞  뤆 룊 삕 뜝 럩肉뷴뜝 럥 뿼占쎈빝 뜝占 ; font-size: 20px; color: black;'>" + output + "</p>", 0, 0, null);
 						}
@@ -1063,7 +1063,6 @@ public class Main {
 		
 		frame.pack();
 	    
-	    
 	    Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 	    int month = cal.get(Calendar.MONTH) + 1;
@@ -1074,12 +1073,10 @@ public class Main {
 		for(int i = 0; i < lastDay; i++) {
 			calArr.add(i + 1);
 		}
-		
 	}
 }
 
 class MyActionListener implements ActionListener {
-	
 	String day;
 	
 	MyActionListener(String day) {
@@ -1089,6 +1086,4 @@ class MyActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		new EmotionFrame(day);
 	}
-	
-	
 }

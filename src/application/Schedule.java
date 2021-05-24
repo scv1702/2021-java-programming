@@ -3,6 +3,7 @@ package application;
 public class Schedule implements Comparable<Schedule> {
     private String content;
     private String startClock;
+    private String tag;
     
 	private int startHour;
     private int startMin;
@@ -12,8 +13,9 @@ public class Schedule implements Comparable<Schedule> {
     
     private int ID;
 
-    public Schedule(String content, int startHour, int startMin, int finishHour, int finishMin) {
+    public Schedule(String content, String tag, int startHour, int startMin, int finishHour, int finishMin) {
         this.content = content;
+        this.tag = tag;
         this.startClock = String.format("%s-%s", startHour, startMin);
         
         this.startHour = startHour;
@@ -81,6 +83,10 @@ public class Schedule implements Comparable<Schedule> {
     	} else {
     		return String.format("%s시 %s분", getFinishHour(), getFinishMin());
     	}
+    }
+    
+    public String getTag() {
+    	return tag;
     }
     
     @Override
