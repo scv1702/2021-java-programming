@@ -131,23 +131,8 @@ public class Main {
 		MoodPanel.setVisible(false);
 		frame.getContentPane().add(MoodPanel);
 		
-		moodgoToMenubtn.setBounds(1214, 22, 48, 46);
-		moodgoToMenubtn.setBorderPainted(false);
-		moodgoToMenubtn.setContentAreaFilled(false);
-		MoodPanel.add(moodgoToMenubtn);
 		
-		moodgoToMenubtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MoodPanel.setVisible(false);
-				menuPanel.setVisible(true);
-			}	
-		});
-		
-		// Create MonthPanel to use moodPanel
-		
-		Font MoodbtnFont = new Font("나눔고딕", Font.PLAIN, 70);		// Set button font
-		
+		// Create MonthPanel to use moodPanel		
 		// All Day Button
 		JButton MonthBtn[][] = new JButton[12][];
 		
@@ -795,6 +780,42 @@ public class Main {
 	    		}
 	    	}
 	    });
+
+		moodgoToMenubtn.setBounds(1214, 22, 48, 46);
+		moodgoToMenubtn.setBorderPainted(false);
+		moodgoToMenubtn.setContentAreaFilled(false);
+		MoodPanel.add(moodgoToMenubtn);
+		
+		moodgoToMenubtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				monthMood = date.get(Calendar.MONTH) + 1;
+				if(monthMood - 10 < 0) {
+	    	    	monthLB.setText("0" + Integer.toString(monthMood));	
+	    	    }
+	    	    else {
+	    	    	monthLB.setText(Integer.toString(monthMood));
+	    	    }
+				
+				MoodMonth01.setVisible(false);
+				MoodMonth02.setVisible(false);
+				MoodMonth03.setVisible(false);
+				MoodMonth04.setVisible(false);
+				MoodMonth05.setVisible(false);
+				MoodMonth06.setVisible(false);
+				MoodMonth07.setVisible(false);
+				MoodMonth08.setVisible(false);
+				MoodMonth09.setVisible(false);
+				MoodMonth10.setVisible(false);
+				MoodMonth11.setVisible(false);
+				MoodMonth12.setVisible(false);
+				
+				MoodPanel.setVisible(false);
+				menuPanel.setVisible(true);
+
+			}	
+		});
+	    
 	    
 	    // Change Mood
 	    JButton moodChange = new JButton("Change Mood");
@@ -881,6 +902,7 @@ public class Main {
 	    		}
 	    	}
 	    });
+	    
 	    
 		frame.getContentPane().add(PlanPanel);
 		PlanPanel.setLayout(null);
