@@ -122,6 +122,7 @@ public class DB {
 			
 			FileWriter fw = new FileWriter(path);
 			fw.write(dummy);
+			fw.flush();
 		} catch (Exception e) {
 			System.out.println(e);
 		}

@@ -2,7 +2,7 @@ package application;
 
 public class Schedule implements Comparable<Schedule> {
     private String content;
-    private String startFinish;
+    private String startClock;
     
 	private int startHour;
     private int startMin;
@@ -14,7 +14,7 @@ public class Schedule implements Comparable<Schedule> {
 
     public Schedule(String content, int startHour, int startMin, int finishHour, int finishMin) {
         this.content = content;
-        this.startFinish = String.format("%s-%s-%s-%s", startHour, startMin, finishHour, finishMin);
+        this.startClock = String.format("%s-%s", startHour, startMin);
         
         this.startHour = startHour;
         this.startMin = startMin;
@@ -63,8 +63,8 @@ public class Schedule implements Comparable<Schedule> {
 		this.finishMin = finishMin;
 	}
 	
-	public String getStartFinish() {
-		return startFinish;
+	public String getStartClock() {
+		return startClock;
 	}
 
     public String getStartTime() {
@@ -85,7 +85,7 @@ public class Schedule implements Comparable<Schedule> {
     
     @Override
 	public int compareTo(Schedule s) {
-	    return getStartFinish().compareTo(s.getStartFinish());
+	    return getStartClock().compareTo(s.getStartClock());
 	}
     
     public String toString() {
