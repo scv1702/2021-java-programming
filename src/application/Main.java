@@ -39,6 +39,7 @@ public class Main {
 	static Calendar date = Calendar.getInstance();
 	static int yearMood = date.get(Calendar.YEAR);
     static int monthMood = date.get(Calendar.MONTH) + 1;
+    static int dayMood = date.get(Calendar.DATE);
 
 	/* Create the application. */
 	public Main() {
@@ -154,7 +155,6 @@ public class Main {
 		ImagePanel MoodMonth01 = new ImagePanel(new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
 		MoodMonth01.setLayout(new GridLayout(5,7));
 		MoodMonth01.setBounds(175, 100, 924, 544);
-		MoodMonth01.setBackground(Color.white);
 		MoodPanel.add(MoodMonth01);
 		MoodMonth01.setVisible(false);
 		MonthBtn[0] = new JButton[31];
@@ -163,12 +163,24 @@ public class Main {
 			MonthBtn[0][i] = new JButton();
 			MonthBtn[0][i].setBorderPainted(false);
 			MonthBtn[0][i].setContentAreaFilled(false);
-
 			MoodMonth01.add(MonthBtn[0][i]);
-			if(i <= 8)
-				MonthBtn[0][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
-			else
-				MonthBtn[0][i].addActionListener(new MyActionListener("01" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(1 < monthMood) {
+					MonthBtn[0][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(1 == monthMood && i + 1 < dayMood) {
+					MonthBtn[0][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(1 < monthMood) {
+					MonthBtn[0][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(1 == monthMood && i + 1 < dayMood) {
+					MonthBtn[0][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 		}
 		
 		
@@ -186,10 +198,23 @@ public class Main {
 			MonthBtn[1][i].setContentAreaFilled(false);
 			MoodMonth02.add(MonthBtn[1][i]);	
 			
-			if(i <= 8)
-				MonthBtn[1][i].addActionListener(new MyActionListener("020" + Integer.toString(i + 1)));
-			else
-				MonthBtn[1][i].addActionListener(new MyActionListener("02" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(2 < monthMood) {
+					MonthBtn[1][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(2 == monthMood && i + 1 < dayMood) {
+					MonthBtn[1][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(2 < monthMood) {
+					MonthBtn[1][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(2 == monthMood && i + 1 < dayMood) {
+					MonthBtn[1][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 		}
 		
 		
@@ -205,12 +230,24 @@ public class Main {
 			MonthBtn[2][i] = new JButton();
 			MonthBtn[2][i].setBorderPainted(false);
 			MonthBtn[2][i].setContentAreaFilled(false);
-			MonthBtn[2][i].setForeground(new Color(200, 200, 200));
 			MoodMonth03.add(MonthBtn[2][i]);
-			if(i <= 8)
-				MonthBtn[2][i].addActionListener(new MyActionListener("030" + Integer.toString(i + 1)));
-			else
-				MonthBtn[2][i].addActionListener(new MyActionListener("03" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(3 < monthMood) {
+					MonthBtn[2][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(3 == monthMood && i + 1 < dayMood) {
+					MonthBtn[2][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(3 < monthMood) {
+					MonthBtn[2][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(3 == monthMood && i + 1 < dayMood) {
+					MonthBtn[2][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 		}
 		
 		
@@ -226,13 +263,24 @@ public class Main {
 			MonthBtn[3][i] = new JButton();
 			MonthBtn[3][i].setBorderPainted(false);
 			MonthBtn[3][i].setContentAreaFilled(false);
-			MonthBtn[3][i].setForeground(new Color(200, 200, 200));
 			MoodMonth04.add(MonthBtn[3][i]);
-			
-			if(i <= 8)
-				MonthBtn[3][i].addActionListener(new MyActionListener("040" + Integer.toString(i + 1)));
-			else
-				MonthBtn[3][i].addActionListener(new MyActionListener("04" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(4 < monthMood) {
+					MonthBtn[3][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(4 == monthMood && i + 1 < dayMood) {
+					MonthBtn[3][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(4 < monthMood) {
+					MonthBtn[3][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(4 == monthMood && i + 1 < dayMood) {
+					MonthBtn[3][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 			
 		}
 		
@@ -250,12 +298,24 @@ public class Main {
 			MonthBtn[4][i].setBorderPainted(false);
 			MonthBtn[4][i].setContentAreaFilled(false);
 			MonthBtn[4][i].setOpaque(false);
-			//MonthBtn[4][i].setForeground(new Color(200, 200, 200));
 			MoodMonth05.add(MonthBtn[4][i]);
-			if(i <= 8)
-				MonthBtn[4][i].addActionListener(new MyActionListener("050" + Integer.toString(i + 1)));
-			else
-				MonthBtn[4][i].addActionListener(new MyActionListener("05" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(5 < monthMood) {
+					MonthBtn[4][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(5 == monthMood && i + 1 < dayMood) {
+					MonthBtn[4][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(5 < monthMood) {
+					MonthBtn[4][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(5 == monthMood && i + 1 < dayMood) {
+					MonthBtn[4][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 			
 		}
 		
@@ -264,7 +324,6 @@ public class Main {
 		ImagePanel MoodMonth06 = new ImagePanel(new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
 		MoodMonth06.setLayout(new GridLayout(5,7));
 		MoodMonth06.setBounds(175, 100, 924, 544);
-		MoodMonth06.setBackground(Color.white);
 		MoodPanel.add(MoodMonth06);
 		MoodMonth06.setVisible(false);
 		MonthBtn[5] = new JButton[30];
@@ -273,13 +332,24 @@ public class Main {
 			MonthBtn[5][i] = new JButton();
 			MonthBtn[5][i].setBorderPainted(false);
 			MonthBtn[5][i].setContentAreaFilled(false);
-			MonthBtn[5][i].setForeground(new Color(200, 200, 200));
 			MoodMonth06.add(MonthBtn[5][i]);
-			if(i <= 8)
-				MonthBtn[5][i].addActionListener(new MyActionListener("060" + Integer.toString(i + 1)));
-			else
-				MonthBtn[5][i].addActionListener(new MyActionListener("06" + Integer.toString(i + 1)));
-			
+			if(i <= 8) {
+				if(6 < monthMood) {
+					MonthBtn[5][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(6 == monthMood && i + 1 < dayMood) {
+					MonthBtn[5][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(6 < monthMood) {
+					MonthBtn[5][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(6 == monthMood && i + 1 < dayMood) {
+					MonthBtn[5][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 		}
 
 		
@@ -287,7 +357,6 @@ public class Main {
 		ImagePanel MoodMonth07 = new ImagePanel(new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
 		MoodMonth07.setLayout(new GridLayout(5,7));
 		MoodMonth07.setBounds(175, 100, 924, 544);
-		MoodMonth07.setBackground(Color.white);
 		MoodPanel.add(MoodMonth07);
 		MoodMonth07.setVisible(false);
 		MonthBtn[6] = new JButton[31];
@@ -296,12 +365,24 @@ public class Main {
 			MonthBtn[6][i] = new JButton();
 			MonthBtn[6][i].setBorderPainted(false);
 			MonthBtn[6][i].setContentAreaFilled(false);
-			MonthBtn[6][i].setForeground(new Color(200, 200, 200));
 			MoodMonth07.add(MonthBtn[6][i]);
-			if(i <= 8)
-				MonthBtn[6][i].addActionListener(new MyActionListener("070" + Integer.toString(i + 1)));
-			else
-				MonthBtn[6][i].addActionListener(new MyActionListener("07" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(7 < monthMood) {
+					MonthBtn[6][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(7 == monthMood && i + 1 < dayMood) {
+					MonthBtn[6][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(7 < monthMood) {
+					MonthBtn[6][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(7 == monthMood && i + 1 < dayMood) {
+					MonthBtn[6][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 		}
 		
 		
@@ -310,7 +391,6 @@ public class Main {
 		ImagePanel MoodMonth08 = new ImagePanel(new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
 		MoodMonth08.setLayout(new GridLayout(5,7));
 		MoodMonth08.setBounds(175, 100, 924, 544);
-		MoodMonth08.setBackground(Color.white);
 		MoodPanel.add(MoodMonth08);
 		MoodMonth08.setVisible(false);
 		MonthBtn[7] = new JButton[31];
@@ -319,12 +399,24 @@ public class Main {
 			MonthBtn[7][i] = new JButton();
 			MonthBtn[7][i].setBorderPainted(false);
 			MonthBtn[7][i].setContentAreaFilled(false);
-			MonthBtn[7][i].setForeground(new Color(200, 200, 200));
 			MoodMonth08.add(MonthBtn[7][i]);
-			if(i <= 8)
-				MonthBtn[7][i].addActionListener(new MyActionListener("080" + Integer.toString(i + 1)));
-			else
-				MonthBtn[7][i].addActionListener(new MyActionListener("08" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(8 < monthMood) {
+					MonthBtn[7][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(8 == monthMood && i + 1 < dayMood) {
+					MonthBtn[7][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(8 < monthMood) {
+					MonthBtn[7][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(8 == monthMood && i + 1 < dayMood) {
+					MonthBtn[7][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 		}
 		
 		
@@ -333,7 +425,6 @@ public class Main {
 		ImagePanel MoodMonth09 = new ImagePanel(new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
 		MoodMonth09.setLayout(new GridLayout(5,7));
 		MoodMonth09.setBounds(175, 100, 924, 544);
-		MoodMonth09.setBackground(Color.white);
 		MoodPanel.add(MoodMonth09);
 		MoodMonth09.setVisible(false);
 		MonthBtn[8] = new JButton[30];
@@ -342,12 +433,24 @@ public class Main {
 			MonthBtn[8][i] = new JButton();
 			MonthBtn[8][i].setBorderPainted(false);
 			MonthBtn[8][i].setContentAreaFilled(false);
-			MonthBtn[8][i].setForeground(new Color(200, 200, 200));
 			MoodMonth09.add(MonthBtn[8][i]);
-			if(i <= 8)
-				MonthBtn[8][i].addActionListener(new MyActionListener("090" + Integer.toString(i + 1)));
-			else
-				MonthBtn[8][i].addActionListener(new MyActionListener("09" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(9 < monthMood) {
+					MonthBtn[8][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(9 == monthMood && i + 1 < dayMood) {
+					MonthBtn[8][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(9 < monthMood) {
+					MonthBtn[8][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(9 == monthMood && i + 1 < dayMood) {
+					MonthBtn[8][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 		}
 		
 		
@@ -357,7 +460,6 @@ public class Main {
 		ImagePanel MoodMonth10 = new ImagePanel(new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
 		MoodMonth10.setLayout(new GridLayout(5,7));
 		MoodMonth10.setBounds(175, 100, 924, 544);
-		MoodMonth10.setBackground(Color.white);
 		MoodPanel.add(MoodMonth10);
 		MoodMonth10.setVisible(false);
 		MonthBtn[9] = new JButton[31];
@@ -366,12 +468,24 @@ public class Main {
 			MonthBtn[9][i] = new JButton();
 			MonthBtn[9][i].setBorderPainted(false);
 			MonthBtn[9][i].setContentAreaFilled(false);
-			MonthBtn[9][i].setForeground(new Color(200, 200, 200));
 			MoodMonth10.add(MonthBtn[9][i]);
-			if(i <= 8)
-				MonthBtn[9][i].addActionListener(new MyActionListener("100" + Integer.toString(i + 1)));
-			else
-				MonthBtn[9][i].addActionListener(new MyActionListener("10" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(10 < monthMood) {
+					MonthBtn[9][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(10 == monthMood && i + 1 < dayMood) {
+					MonthBtn[9][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(10 < monthMood) {
+					MonthBtn[9][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(10 == monthMood && i + 1 < dayMood) {
+					MonthBtn[9][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 		}
 		
 		
@@ -380,7 +494,6 @@ public class Main {
 		ImagePanel MoodMonth11 = new ImagePanel(new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
 		MoodMonth11.setLayout(new GridLayout(5,7));
 		MoodMonth11.setBounds(175, 100, 924, 544);
-		MoodMonth11.setBackground(Color.white);
 		MoodPanel.add(MoodMonth11);
 		MoodMonth11.setVisible(false);
 		MonthBtn[10] = new JButton[30];
@@ -389,12 +502,24 @@ public class Main {
 			MonthBtn[10][i] = new JButton();
 			MonthBtn[10][i].setBorderPainted(false);
 			MonthBtn[10][i].setContentAreaFilled(false);
-			MonthBtn[10][i].setForeground(new Color(200, 200, 200));
 			MoodMonth11.add(MonthBtn[10][i]);
-			if(i <= 8)
-				MonthBtn[10][i].addActionListener(new MyActionListener("110" + Integer.toString(i + 1)));
-			else
-				MonthBtn[10][i].addActionListener(new MyActionListener("11" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(11 < monthMood) {
+					MonthBtn[10][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(11 == monthMood && i + 1 < dayMood) {
+					MonthBtn[10][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(11 < monthMood) {
+					MonthBtn[10][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(11 == monthMood && i + 1 < dayMood) {
+					MonthBtn[10][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 		}
 		
 		
@@ -403,7 +528,6 @@ public class Main {
 		ImagePanel MoodMonth12 = new ImagePanel(new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
 		MoodMonth12.setLayout(new GridLayout(5,7));
 		MoodMonth12.setBounds(175, 100, 924, 544);
-		MoodMonth12.setBackground(Color.white);
 		MoodPanel.add(MoodMonth12);
 		MoodMonth12.setVisible(false);
 		MonthBtn[11] = new JButton[31];
@@ -412,12 +536,24 @@ public class Main {
 			MonthBtn[11][i] = new JButton();
 			MonthBtn[11][i].setBorderPainted(false);
 			MonthBtn[11][i].setContentAreaFilled(false);
-			MonthBtn[11][i].setForeground(new Color(200, 200, 200));
 			MoodMonth12.add(MonthBtn[11][i]);
-			if(i <= 8)
-				MonthBtn[11][i].addActionListener(new MyActionListener("120" + Integer.toString(i + 1)));
-			else
-				MonthBtn[11][i].addActionListener(new MyActionListener("12" + Integer.toString(i + 1)));
+			if(i <= 8) {
+				if(12 < monthMood) {
+					MonthBtn[11][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(12 == monthMood && i + 1 < dayMood) {
+					MonthBtn[11][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+					
+			}
+			else {
+				if(12 < monthMood) {
+					MonthBtn[11][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+				else if(12 == monthMood && i + 1 < dayMood) {
+					MonthBtn[11][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
+				}
+			}
 		}
 		
 		ImageIcon icon;
@@ -474,7 +610,7 @@ public class Main {
 	            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
 	            			break;
 	            		case 5:
-	            			icon = new ImageIcon("./data/images/mood/seck.png");
+	            			icon = new ImageIcon("./data/images/mood/sick.png");
 	            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 	            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
 	            			break;
@@ -725,7 +861,7 @@ public class Main {
 			            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
 			            			break;
 			            		case 5:
-			            			icon = new ImageIcon("./data/images/mood/seck.png");
+			            			icon = new ImageIcon("./data/images/mood/sick.png");
 			            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 			            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
 			            			break;
