@@ -472,7 +472,7 @@ public class Main {
 				MonthBtn[11][i].addActionListener(new MyActionListener("12" + Integer.toString(i + 1)));
 		}
 		
-		// if Mood save DB, then icon is image.
+		// if Mood save DB, then icon is image
 		String path = "./data/moodDB";
 		File dir = new File(path);
 		File []fileList = dir.listFiles();
