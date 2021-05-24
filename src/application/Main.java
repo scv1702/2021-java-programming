@@ -153,23 +153,19 @@ public class Main {
 		
 		
 		// Month : 1 (Panel)
-		JPanel MoodMonth01 = new JPanel();
-		MoodMonth01.setBounds(172, 129, 924, 500);
+		ImagePanel MoodMonth01 = new ImagePanel(new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+		MoodMonth01.setLayout(new GridLayout(5,7));
+		MoodMonth01.setBounds(175, 100, 924, 544);
 		MoodMonth01.setBackground(Color.white);
 		MoodPanel.add(MoodMonth01);
 		MoodMonth01.setVisible(false);
 		MonthBtn[0] = new JButton[31];
 		
 		for (int i = 0 ; i < MonthBtn[0].length; i++) {
-			if (i <= 8)
-				MonthBtn[0][i] = new JButton(String.format("0%d", i + 1));
-			else
-				MonthBtn[0][i] = new JButton(String.format("%d", i + 1));
-			
-			MonthBtn[0][i].setFont(MoodbtnFont);
+			MonthBtn[0][i] = new JButton();
 			MonthBtn[0][i].setBorderPainted(false);
 			MonthBtn[0][i].setContentAreaFilled(false);
-			MonthBtn[0][i].setForeground(new Color(200, 200, 200));
+
 			MoodMonth01.add(MonthBtn[0][i]);
 			if(i <= 8)
 				MonthBtn[0][i].addActionListener(new MyActionListener("010" + Integer.toString(i + 1)));
@@ -1063,6 +1059,7 @@ public class Main {
 		
 		frame.pack();
 	    
+	    
 	    Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 	    int month = cal.get(Calendar.MONTH) + 1;
@@ -1073,10 +1070,12 @@ public class Main {
 		for(int i = 0; i < lastDay; i++) {
 			calArr.add(i + 1);
 		}
+		
 	}
 }
 
 class MyActionListener implements ActionListener {
+	
 	String day;
 	
 	MyActionListener(String day) {
@@ -1086,4 +1085,6 @@ class MyActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		new EmotionFrame(day);
 	}
+	
+	
 }
