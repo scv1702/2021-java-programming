@@ -63,7 +63,7 @@ public class Main {
 		ImagePanel startPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Kaily_start.png").getImage());
 		ImagePanel menuPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Kaily_menu.png").getImage());
 		ImagePanel MoodPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/MoodPanel.png").getImage());
-		ImagePanel TrackerPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/TrackerPanel.png").getImage());
+		ImagePanel TrackerPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/TrackerPanel_r.png").getImage());
 		ImagePanel monthlyTrackerPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Tracker_monthly_panel.png").getImage());
 		ImagePanel dailyTrackerPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Tracker_daily_panel.png").getImage());
 		ImagePanel PlanPanel =  new ImagePanel(new ImageIcon("./data/images/panel_page/PlanPanel.png").getImage());
@@ -73,7 +73,7 @@ public class Main {
 
 		JButton plangoToMenubtn = new JButton("");
 		JButton AddPlanbtn = new JButton("");
-		JButton goToMenu = new JButton(" 뜝 럥堉ｅ뜝 럥六욕뜝 럩踰   뜝 럥由 占쎈쇀占쎈  뜝 룞 삕  뜝 럥留숋옙 쇊占쎄섰 뇡占썲뜝 럥裕  占쎈쑏熬곣뫕 맋, Kaily.");
+		JButton goToMenu = new JButton(" �쐻 �윥�젆節낅쐻 �윥�뀷�슃�쐻 �윪甕�   �쐻 �윥�뵳 �뜝�럥���뜝�럥  �쐻 猷� �굲  �쐻 �윥�븰�닂�삕 �뇢�뜝�럡�꽣 �눀�뜝�뜴�쐻 �윥獒�  �뜝�럥�몡�넭怨ｋ쳲 留�, Kaily.");
 		JButton Planbtn = new JButton("");
 		JButton Trackerbtn = new JButton("");
 		JButton Moodbtn = new JButton("");
@@ -91,9 +91,9 @@ public class Main {
 		
 		
 		AddPlanbtn.setIcon(new ImageIcon("./data/images/Icon/Add.png"));
-		Planbtn.setIcon(new ImageIcon("./data/images/Icon/Plan.png"));
-		Trackerbtn.setIcon(new ImageIcon("./data/images/Icon/Tracker.png"));
-		Moodbtn.setIcon(new ImageIcon("./data/images/Icon/Mood.png"));
+		Planbtn.setIcon(new ImageIcon("./data/images/Icon/Plan_r.png"));
+		Trackerbtn.setIcon(new ImageIcon("./data/images/Icon/Tracker_r.png"));
+		Moodbtn.setIcon(new ImageIcon("./data/images/Icon/Mood_r.png"));
 		Deletebtn.setIcon(new ImageIcon("./data/images/Icon/delete.png"));
 		Backbtn.setIcon(new ImageIcon("./data/images/Icon/back.png"));
 		Forwardbtn.setIcon(new ImageIcon("./data/images/Icon/fast-forward.png"));
@@ -564,24 +564,24 @@ public class Main {
 	    	monthLB.setText(Integer.toString(monthMood));
 	    }
 	    
-	    JButton prevMonthBtn = new JButton("◀");
-	    JButton nextMonthBtn = new JButton("▶");
+	    JButton prevMonthBtn = new JButton("��");
+	    JButton nextMonthBtn = new JButton("�뼳");
 	    
 	    yearLB.setBounds(1127, 22, 100, 46);
-	    yearLB.setFont(new Font("占쎄돌占쎈땸 ⑥쥓逾 ", Font.BOLD, 15));
+	    yearLB.setFont(new Font("�뜝�럡�룎�뜝�럥�빖 �뫁伊볣�� ", Font.BOLD, 15));
 	    
 	    monthLB.setBounds(1126, 50, 50, 46);
-	    monthLB.setFont(new Font("占쎄돌占쎈땸 ⑥쥓逾 ", Font.BOLD, 30));
+	    monthLB.setFont(new Font("�뜝�럡�룎�뜝�럥�빖 �뫁伊볣�� ", Font.BOLD, 30));
 	    
 	    prevMonthBtn.setBounds(1070, 36, 70, 46);
 	    prevMonthBtn.setBorderPainted(false);
 	    prevMonthBtn.setContentAreaFilled(false);
-	    prevMonthBtn.setFont(new Font("占쎄돌占쎈땸 ⑥쥓逾 ", Font.BOLD, 25));
+	    prevMonthBtn.setFont(new Font("�뜝�럡�룎�뜝�럥�빖 �뫁伊볣�� ", Font.BOLD, 25));
 	    
 	    nextMonthBtn.setBounds(1147, 36, 70, 46);
 	    nextMonthBtn.setBorderPainted(false);
 	    nextMonthBtn.setContentAreaFilled(false);
-	    nextMonthBtn.setFont(new Font("占쎄돌占쎈땸 ⑥쥓逾 ", Font.BOLD, 25));
+	    nextMonthBtn.setFont(new Font("�뜝�럡�룎�뜝�럥�빖 �뫁伊볣�� ", Font.BOLD, 25));
 	    
 	    MoodPanel.add(yearLB);
 	    MoodPanel.add(monthLB);
@@ -760,7 +760,7 @@ public class Main {
 	    moodChange.setBounds(999, 30, 66, 60);
 	    moodChange.setBorderPainted(false);
 	    moodChange.setContentAreaFilled(false);
-	    moodChange.setFont(new Font("나눔 고딕", Font.BOLD, 10));
+	    moodChange.setFont(new Font("�굹�닎 怨좊뵓", Font.BOLD, 10));
 	    MoodPanel.add(moodChange);
 	    
 	    moodChange.addActionListener(new ActionListener() {
@@ -888,11 +888,11 @@ public class Main {
 				menuPanel.setVisible(true);
 			}		
 		});
-		goToMenu.setFont(new Font(" 뜝 럡 룎 뜝 럥 빖 뜝 럥占썹뼨 먯삕 뜝 럥 럞  뤆 룊 삕 뜝 럩肉뷴뜝 럥 뿼占쎈빝 뜝占 ", Font.PLAIN, 24));
+		goToMenu.setFont(new Font(" �쐻 �윞 猷� �쐻 �윥 鍮� �쐻 �윥�뜝�뜾堉� 癒��굲 �쐻 �윥 �윛  琉� 猷� �굲 �쐻 �윪�굢酉대쐻 �윥 肉쇔뜝�럥鍮� �쐻�뜝 ", Font.PLAIN, 24));
 		
 		Planbtn.setBorderPainted(false);
-
-		Planbtn.setBounds(586, 58, 133, 84);
+		Planbtn.setBackground(Color.WHITE);
+		Planbtn.setBounds(586, 58, 90, 55);
 		Planbtn.setRolloverIcon(clickPlan);
 		menuPanel.add(Planbtn);
 		
@@ -905,9 +905,10 @@ public class Main {
 		});
 		
 		Trackerbtn.setBorderPainted(false);
-
-		Trackerbtn.setBounds(334, 484, 165, 63);
+		Trackerbtn.setBackground(Color.WHITE);
+		Trackerbtn.setBounds(334, 484, 140, 56);
 		Trackerbtn.setRolloverIcon(clickTracker);
+		
 		menuPanel.add(Trackerbtn);
 		
 		Trackerbtn.addActionListener(new ActionListener() {
@@ -919,8 +920,8 @@ public class Main {
 		});
 		
 		Moodbtn.setBorderPainted(false);
-
-		Moodbtn.setBounds(809, 484, 165, 63);
+		Moodbtn.setBackground(Color.WHITE);
+		Moodbtn.setBounds(809, 484, 120, 51);
 		Moodbtn.setRolloverIcon(clickMood);
 		menuPanel.add(Moodbtn);
 		
@@ -984,7 +985,12 @@ public class Main {
 			}	
 		});
 		
-		goToDailyTrackerbtn.setBounds(224, 305, 193, 101);
+		Image temp = new ImageIcon("./data/images/Icon/Daily_click.png").getImage();
+        Image change = temp.getScaledInstance(224, 125, Image.SCALE_SMOOTH);
+        ImageIcon tempicon = new ImageIcon(change);
+        goToDailyTrackerbtn.setIcon(tempicon);
+        
+		goToDailyTrackerbtn.setBounds(224, 305, 224, 125);
 		goToDailyTrackerbtn.setBorderPainted(false);
 		goToDailyTrackerbtn.setContentAreaFilled(false);
 		TrackerPanel.add(goToDailyTrackerbtn);
@@ -998,7 +1004,53 @@ public class Main {
 			}	
 		});
 		
-		goToMonthlyTracker.setBounds(798, 305, 238, 101);
+		goToDailyTrackerbtn.addMouseListener(new MouseListener() {
+    		
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Image temp = new ImageIcon("./data/images/Icon/Daily_click.png").getImage();
+		        Image change = temp.getScaledInstance(224, 125, Image.SCALE_SMOOTH);
+		        ImageIcon tempicon = new ImageIcon(change);
+		        goToDailyTrackerbtn.setIcon(tempicon);
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Image temp = new ImageIcon("./data/images/Icon/Daily_click_line.png").getImage();
+		        Image change = temp.getScaledInstance(224, 125, Image.SCALE_SMOOTH);
+		        ImageIcon tempicon = new ImageIcon(change);
+		        goToDailyTrackerbtn.setIcon(tempicon);
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		
+		
+		temp = new ImageIcon("./data/images/Icon/Monthly_click.png").getImage();
+        change = temp.getScaledInstance(351, 126, Image.SCALE_SMOOTH);
+        tempicon = new ImageIcon(change);
+        goToMonthlyTracker.setIcon(tempicon);
+		
+		goToMonthlyTracker.setBounds(758, 305, 351, 126);
 		goToMonthlyTracker.setBorderPainted(false);
 		goToMonthlyTracker.setContentAreaFilled(false);
 		TrackerPanel.add(goToMonthlyTracker);
@@ -1011,6 +1063,46 @@ public class Main {
 				
 			}	
 		});
+
+		goToMonthlyTracker.addMouseListener(new MouseListener() {
+    		
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Image temp = new ImageIcon("./data/images/Icon/Monthly_click.png").getImage();
+		        Image change = temp.getScaledInstance(351, 126, Image.SCALE_SMOOTH);
+		        ImageIcon tempicon = new ImageIcon(change);
+		        goToMonthlyTracker.setIcon(tempicon);
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Image temp = new ImageIcon("./data/images/Icon/Monthly_click_line.png").getImage();
+		        Image change = temp.getScaledInstance(351, 126, Image.SCALE_SMOOTH);
+		        ImageIcon tempicon = new ImageIcon(change);
+		        goToMonthlyTracker.setIcon(tempicon);
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		 
 		
 		monthlyToTracker.setBounds(63, 357, 70, 60);
 		monthlyToTracker.setBorderPainted(false);
@@ -1118,12 +1210,12 @@ public class Main {
 					
 					for (Day d : DB.dayDB) {
 						text += DB.searchScheduleList(d);
-						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family:  뜝 럡 룎 뜝 럥 빖 뜝 럥占썹뼨 먯삕 뜝 럥 럞  뤆 룊 삕 뜝 럩肉뷴뜝 럥 뿼占쎈빝 뜝占 ; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
+						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family:  �쐻 �윞 猷� �쐻 �윥 鍮� �쐻 �윥�뜝�뜾堉� 癒��굲 �쐻 �윥 �윛  琉� 猷� �굲 �쐻 �윪�굢酉대쐻 �윥 肉쇔뜝�럥鍮� �쐻�뜝 ; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p><hr align='left' width ='200px'></p>", 0, 0, null);
 						for (Schedule s : DB.searchScheduleList(d).scheduleList) {
 							String output = String.format("%02d : %02d ~ %02d : %02d %s %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent(), s.getTag());
 							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='6px'> <br> </font>", 0, 0, null);
-							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p style='font-family:  뜝 럡 룎 뜝 럥 빖 뜝 럥占썹뼨 먯삕 뜝 럥 럞  뤆 룊 삕 뜝 럩肉뷴뜝 럥 뿼占쎈빝 뜝占 ; font-size: 20px; color: black;'>" + output + "</p>", 0, 0, null);
+							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p style='font-family:  �쐻 �윞 猷� �쐻 �윥 鍮� �쐻 �윥�뜝�뜾堉� 癒��굲 �쐻 �윥 �윛  琉� 猷� �굲 �쐻 �윪�굢酉대쐻 �윥 肉쇔뜝�럥鍮� �쐻�뜝 ; font-size: 20px; color: black;'>" + output + "</p>", 0, 0, null);
 						}
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='20px'><br><br><br></font>", 0, 0, null);
 						Util.makeMp3(text, "schedule");

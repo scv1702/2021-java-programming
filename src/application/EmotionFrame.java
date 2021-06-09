@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
 import java.io.IOException;
 
 import java.io.FileWriter;
@@ -21,11 +23,21 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 
+
+
 public class EmotionFrame extends JFrame {
+	
+	public void putimage(ImageIcon[] img,int i,JButton[] btn) {
+		Image temp = img[i].getImage();
+        Image change = temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ImageIcon tempicon = new ImageIcon(change);
+        btn[i].setIcon(tempicon);
+	}
+	
 	
 	public EmotionFrame(String day) {
 		
-		Font font = new Font("나눔 고딕", Font.PLAIN, 20);
+		Font font = new Font("�굹�닎 怨좊뵓", Font.PLAIN, 20);
 
         JFrame frm = new JFrame("Emotion");
         frm.setSize(500, 400);
@@ -58,12 +70,14 @@ public class EmotionFrame extends JFrame {
         new ImageIcon("./data/images/mood/bad.png"), new ImageIcon("./data/images/mood/sad.png"), new ImageIcon("./data/images/mood/sick.png") };
         
         for(int i = 0; i < img.length; i++) {
-            Image temp = img[i].getImage();
-            Image change = temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-            ImageIcon tempicon = new ImageIcon(change);
-            btn[i].setIcon(tempicon);
+           putimage(img, i, btn);
         }
         
+        ImageIcon[] img_r = { new ImageIcon("./data/images/mood/happy_r.png"), new ImageIcon("./data/images/mood/good_r.png"), new ImageIcon("./data/images/mood/tired_r.png"),
+                new ImageIcon("./data/images/mood/bad_r.png"), new ImageIcon("./data/images/mood/sad_r.png"), new ImageIcon("./data/images/mood/sick_r.png") };
+
+    
+   
         // happy (0)
         btn[0].addActionListener(new ActionListener() {
             @Override
@@ -82,6 +96,38 @@ public class EmotionFrame extends JFrame {
                 frm.dispose();
             }
         });
+        btn[0].addMouseListener(new MouseListener() {
+    		
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				putimage(img, 0, btn);
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				putimage(img_r, 0, btn);
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
         
         // good (1)
         btn[1].addActionListener(new ActionListener() {
@@ -101,7 +147,38 @@ public class EmotionFrame extends JFrame {
                 frm.dispose();
             }
         });
-        
+        btn[1].addMouseListener(new MouseListener() {
+    		
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				putimage(img, 1, btn);
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				putimage(img_r, 1, btn);
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
         // tired (2)
         btn[2].addActionListener(new ActionListener() {
             @Override
@@ -120,6 +197,38 @@ public class EmotionFrame extends JFrame {
                 frm.dispose();
             }
         });
+        btn[2].addMouseListener(new MouseListener() {
+    		
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				putimage(img, 2, btn);
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				putimage(img_r, 2, btn);
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
         
         // bad (3)
         btn[3].addActionListener(new ActionListener() {
@@ -139,7 +248,38 @@ public class EmotionFrame extends JFrame {
                 frm.dispose();
             }
         });
-        
+        btn[3].addMouseListener(new MouseListener() {
+    		
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				putimage(img, 3, btn);
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				putimage(img_r, 3, btn);
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
         // sad (4)
         btn[4].addActionListener(new ActionListener() {
             @Override
@@ -158,7 +298,38 @@ public class EmotionFrame extends JFrame {
                 frm.dispose();
             }
         });
-        
+        btn[4].addMouseListener(new MouseListener() {
+    		
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				putimage(img, 4, btn);
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				putimage(img_r, 4, btn);
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
         // sick (5)
         btn[5].addActionListener(new ActionListener() {
             @Override
@@ -177,7 +348,38 @@ public class EmotionFrame extends JFrame {
                 frm.dispose();
             }
         });
-        
+        btn[5].addMouseListener(new MouseListener() {
+    		
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				putimage(img, 5, btn);
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				putimage(img_r, 5, btn);
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
         
         frm.setVisible(true);
 	}
