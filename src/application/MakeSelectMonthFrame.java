@@ -1,6 +1,6 @@
 /*
- * ´Þ·Â »ý¼º 
- * ÀÛ¼ºÀÚ: ÀÌÁöÇö
+ * ï¿½Þ·ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+ * ï¿½Û¼ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 
 package application;
@@ -22,220 +22,214 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MakeSelectMonthFrame extends JFrame implements ItemListener, ActionListener {
-    // ÆùÆ® ¼³Á¤
-    Font font = new Font("³ª´®°íµñ", Font.PLAIN, 20);
+	// ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+	Font font = new Font("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 20);
 
-    // »ó´Ü
-    JPanel selectPane = new JPanel();        // ÆÐ³Î »ý¼º
-    JButton prevMonthBtn = new JButton("¢¸");   // ÀÌÀü ¹öÆ°
-    JButton nextMonthBtn = new JButton("¢º");   // ´ÙÀ½ ¹öÆ°
+	// ï¿½ï¿½ï¿½
+	JPanel selectPane = new JPanel(); // ï¿½Ð³ï¿½ ï¿½ï¿½ï¿½ï¿½
+	JButton prevMonthBtn = new JButton("ï¿½ï¿½"); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
+	JButton nextMonthBtn = new JButton("ï¿½ï¿½"); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
 
-    JComboBox<Integer> yearCombo = new JComboBox<Integer>(); //³âµµ ÄÞº¸¹Ú½ºÃß°¡
-	JComboBox<Integer> monthCombo = new JComboBox<Integer>(); //¿ù ÄÞº¸¹Ú½º Ãß°¡
+	JComboBox<Integer> yearCombo = new JComboBox<Integer>(); // ï¿½âµµ ï¿½Þºï¿½ï¿½Ú½ï¿½ï¿½ß°ï¿½
+	JComboBox<Integer> monthCombo = new JComboBox<Integer>(); // ï¿½ï¿½ ï¿½Þºï¿½ï¿½Ú½ï¿½ ï¿½ß°ï¿½
 
-    JLabel yearLB = new JLabel("³â");        // "³â" ¶óº§
-    JLabel monthLB = new JLabel("¿ù");       // "¿ù" ¶óº§
+	JLabel yearLB = new JLabel("ï¿½ï¿½"); // "ï¿½ï¿½" ï¿½ï¿½
+	JLabel monthLB = new JLabel("ï¿½ï¿½"); // "ï¿½ï¿½" ï¿½ï¿½
 
-    JPanel centerPane = new JPanel(new BorderLayout());
-    JPanel titlePane = new JPanel(new GridLayout(1, 7));
-    String[] title = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
-    JPanel dayPane = new JPanel(new GridLayout(0, 7));
+	JPanel centerPane = new JPanel(new BorderLayout());
+	JPanel titlePane = new JPanel(new GridLayout(1, 7));
+	String[] title = { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
+	JPanel dayPane = new JPanel(new GridLayout(0, 7));
 
-    Calendar date;
-    int year;
-    int month;
+	Calendar date;
+	int year;
+	int month;
 
-    public MakeSelectMonthFrame(int heightSize) {
-        super();
-        date = Calendar.getInstance();
-        year = date.get(Calendar.YEAR);
-        month = date.get(Calendar.MONTH) + 1;
+	public MakeSelectMonthFrame(int heightSize) {
+		super();
+		date = Calendar.getInstance();
+		year = date.get(Calendar.YEAR);
+		month = date.get(Calendar.MONTH) + 1;
 
-        // Ã¢ ¼¼ÆÃ
-        setSize(400, heightSize);
-        setVisible(true);
-		// setResizable(false); // »ç¿ëÀÚ Ã¢ Å©±â Á¶Àý ¹æÁö
+		// Ã¢ ï¿½ï¿½ï¿½ï¿½
+		setSize(400, heightSize);
+		setVisible(true);
+		// setResizable(false); // ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¢ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        // ¹è°æ»ö Èò»ö
-        selectPane.setBackground(Color.WHITE);
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		selectPane.setBackground(Color.WHITE);
 
-        // ¹öÆ° Ã¤¿ì±â ¾øÀ½
-        prevMonthBtn.setContentAreaFilled(false);
-        nextMonthBtn.setContentAreaFilled(false);
-        // ¿Ü°û¼± »èÁ¦
-        prevMonthBtn.setBorderPainted(false);
-        nextMonthBtn.setBorderPainted(false);
-        // ¼±ÅÃµÇ¾úÀ» ½Ã »ý±â´Â Å×µÎ¸® »èÁ¦
-        prevMonthBtn.setFocusPainted(false);
-        nextMonthBtn.setFocusPainted(false);
+		// ï¿½ï¿½Æ° Ã¤ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		prevMonthBtn.setContentAreaFilled(false);
+		nextMonthBtn.setContentAreaFilled(false);
+		// ï¿½Ü°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		prevMonthBtn.setBorderPainted(false);
+		nextMonthBtn.setBorderPainted(false);
+		// ï¿½ï¿½ï¿½ÃµÇ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×µÎ¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+		prevMonthBtn.setFocusPainted(false);
+		nextMonthBtn.setFocusPainted(false);
 
-        // ÄÞº¸ ¹Ú½º »ö»ó Èò»ö
-        yearCombo.setBackground(Color.WHITE);
-        monthCombo.setBackground(Color.WHITE);
+		// ï¿½Þºï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		yearCombo.setBackground(Color.WHITE);
+		monthCombo.setBackground(Color.WHITE);
 
-        // ÀÌÀü ´Þ
-        selectPane.add(prevMonthBtn);
-        prevMonthBtn.setFont(font);
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		selectPane.add(prevMonthBtn);
+		prevMonthBtn.setFont(font);
 
-        // ³â
-        selectPane.add(yearCombo);
-        yearCombo.setFont(font);
-        selectPane.add(yearLB);
-        yearLB.setFont(font);
+		// ï¿½ï¿½
+		selectPane.add(yearCombo);
+		yearCombo.setFont(font);
+		selectPane.add(yearLB);
+		yearLB.setFont(font);
 
-        // ¿ù
-        selectPane.add(monthCombo);
-        monthCombo.setFont(font);
-        selectPane.add(monthLB);
-        monthLB.setFont(font);
-        
-        // ´ÙÀ½ ´Þ
-        selectPane.add(nextMonthBtn);
-        nextMonthBtn.setFont(font);
+		// ï¿½ï¿½
+		selectPane.add(monthCombo);
+		monthCombo.setFont(font);
+		selectPane.add(monthLB);
+		monthLB.setFont(font);
 
-        add(BorderLayout.NORTH, selectPane);
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		selectPane.add(nextMonthBtn);
+		nextMonthBtn.setFont(font);
 
-        // ÇöÀç ³â, ¿ù ¼¼ÆÃ
-        setYear();
-        setMonth();
+		add(BorderLayout.NORTH, selectPane);
 
-        setCalendarTitle();
-        centerPane.add(BorderLayout.NORTH, titlePane);
-        add(centerPane);
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		setYear();
+		setMonth();
 
-        centerPane.add(dayPane);
-        setDay();
+		setCalendarTitle();
+		centerPane.add(BorderLayout.NORTH, titlePane);
+		add(centerPane);
 
-        prevMonthBtn.addActionListener(this);
-        nextMonthBtn.addActionListener(this);
+		centerPane.add(dayPane);
+		setDay();
 
-        yearCombo.addItemListener(this);
+		prevMonthBtn.addActionListener(this);
+		nextMonthBtn.addActionListener(this);
+
+		yearCombo.addItemListener(this);
 		monthCombo.addItemListener(this);
-		
-    }
 
-    public void setDay() {
-        date.set(year, month - 1, 1);
-        int week = date.get(Calendar.DAY_OF_WEEK);
-        int lastDay = date.getActualMaximum(Calendar.DATE);
+	}
 
-        for(int i = 1; i < week; i++) {
-            JLabel blankLb = new JLabel(" ");
-            dayPane.add(blankLb);
-        }
+	public void setDay() {
+		date.set(year, month - 1, 1);
+		int week = date.get(Calendar.DAY_OF_WEEK);
+		int lastDay = date.getActualMaximum(Calendar.DATE);
 
-        for(int day = 1; day < lastDay; day++) {
-            JLabel dayLb = new JLabel(String.valueOf(day), JLabel.CENTER);
-            dayLb.setFont(font);
+		for (int i = 1; i < week; i++) {
+			JLabel blankLb = new JLabel(" ");
+			dayPane.add(blankLb);
+		}
 
-            date.set(Calendar.DATE, day);
-            int w = date.get(Calendar.DAY_OF_WEEK);
-            if (w == 1) {  // ÀÏ¿äÀÏ
-                dayLb.setForeground(Color.red);
-            }
-            else if (w == 7) {  // Åä¿äÀÏ
-                dayLb.setForeground(Color.blue);
-            }
-            dayPane.add(dayLb);
-        }
-    }
+		for (int day = 1; day < lastDay; day++) {
+			JLabel dayLb = new JLabel(String.valueOf(day), JLabel.CENTER);
+			dayLb.setFont(font);
 
-    public void setCalendarTitle() {
-        for(int i = 0; i < title.length; i++) {
-            JLabel weekLb = new JLabel(title[i], JLabel.CENTER);
-            weekLb.setFont(font);
-            if(i == 0) {
-                weekLb.setForeground(Color.red);
-            }
-            else if(i == 6) {
-                weekLb.setForeground(Color.blue);
-            }
-            titlePane.add(weekLb);
-        }
-    }
+			date.set(Calendar.DATE, day);
+			int w = date.get(Calendar.DAY_OF_WEEK);
+			if (w == 1) { // ï¿½Ï¿ï¿½ï¿½ï¿½
+				dayLb.setForeground(Color.red);
+			} else if (w == 7) { // ï¿½ï¿½ï¿½ï¿½ï¿½
+				dayLb.setForeground(Color.blue);
+			}
+			dayPane.add(dayLb);
+		}
+	}
 
-    public void setYear() {
-        for (int i = year - 20; i < year + 80; i++) {
-            yearCombo.addItem(i);  // yearCombo ¹Ú½º¿¡ ´ãÀ½
-        }
-        yearCombo.setSelectedItem(year); // ÀÌº¥Æ®¿Í ¿¬µ¿ ½ÃÄÑÁÖ±â À§ÇÔ
-    }
+	public void setCalendarTitle() {
+		for (int i = 0; i < title.length; i++) {
+			JLabel weekLb = new JLabel(title[i], JLabel.CENTER);
+			weekLb.setFont(font);
+			if (i == 0) {
+				weekLb.setForeground(Color.red);
+			} else if (i == 6) {
+				weekLb.setForeground(Color.blue);
+			}
+			titlePane.add(weekLb);
+		}
+	}
 
-    public void setMonth() {
-        for (int i = 1; i <= 12; i++) {
-            monthCombo.addItem(i);
-        }
-        monthCombo.setSelectedItem(month); // ÀÌº¥Æ®¿Í ¿¬µ¿ ½ÃÄÑÁÖ±â À§ÇÔ
-    }
+	public void setYear() {
+		for (int i = year - 20; i < year + 80; i++) {
+			yearCombo.addItem(i); // yearCombo ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		}
+		yearCombo.setSelectedItem(year); // ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½
+	}
 
-    public void itemStateChanged(ItemEvent e) { 
-		year = (int)yearCombo.getSelectedItem();
-		month = (int)monthCombo.getSelectedItem();
-		
+	public void setMonth() {
+		for (int i = 1; i <= 12; i++) {
+			monthCombo.addItem(i);
+		}
+		monthCombo.setSelectedItem(month); // ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½
+	}
+
+	public void itemStateChanged(ItemEvent e) {
+		year = (int) yearCombo.getSelectedItem();
+		month = (int) monthCombo.getSelectedItem();
+
 		dayPane.setVisible(false);
 		dayPane.removeAll();
 		setDay();
 		dayPane.setVisible(true);
 	}
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
+	@Override
+	public void actionPerformed(ActionEvent ae) {
 		Object obj = ae.getSource();
-		if(obj == prevMonthBtn) {
+		if (obj == prevMonthBtn) {
 			prevMonth();
 			setDayReset();
-		}
-        else if(obj == nextMonthBtn) {
-			nextMonth(); 
+		} else if (obj == nextMonthBtn) {
+			nextMonth();
 			setDayReset();
 		}
 	}
 
 	private void setDayReset() {
-        yearCombo.removeItemListener(this);
+		yearCombo.removeItemListener(this);
 		monthCombo.removeItemListener(this);
-		
+
 		yearCombo.setSelectedItem(year);
 		monthCombo.setSelectedItem(month);
-		
+
 		dayPane.setVisible(false);
 		dayPane.removeAll();
 		setDay();
 		dayPane.setVisible(true);
-		
+
 		yearCombo.addItemListener(this);
 		monthCombo.addItemListener(this);
-    }
+	}
 
-    public void prevMonth() {
-        if (month == 1) {
-            year--;
-            month = 12;
-            setYear(year);
-            setMonth(month);
-        }
-        else {
-            month--;
-            setMonth(month);
-        }
-    }
+	public void prevMonth() {
+		if (month == 1) {
+			year--;
+			month = 12;
+			setYear(year);
+			setMonth(month);
+		} else {
+			month--;
+			setMonth(month);
+		}
+	}
 
-    public void nextMonth() {
-        if(month == 12) {
-            year++;
-            month = 1;
-            setYear(year);
-            setMonth(month);
-        }
-        else {
-            month++;
-            setMonth(month);
-        }
-    }
-    
-    
-    public void setYear(int year) {
+	public void nextMonth() {
+		if (month == 12) {
+			year++;
+			month = 1;
+			setYear(year);
+			setMonth(month);
+		} else {
+			month++;
+			setMonth(month);
+		}
+	}
+
+	public void setYear(int year) {
 		this.year = year;
 	}
 
@@ -244,10 +238,10 @@ public class MakeSelectMonthFrame extends JFrame implements ItemListener, Action
 	}
 
 	public int getYear() {
-    	return year;    	
-    }
-    
-    public int getMonth() {
-    	return month;
-    }
+		return year;
+	}
+
+	public int getMonth() {
+		return month;
+	}
 }

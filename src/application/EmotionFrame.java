@@ -80,6 +80,7 @@ public class EmotionFrame extends JFrame {
    
         // happy (0)
         btn[0].addActionListener(new ActionListener() {
+        	Audio mood;
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
@@ -93,6 +94,10 @@ public class EmotionFrame extends JFrame {
                 catch (IOException e) {
                     System.out.println(e);
                 }
+
+				mood = new Audio("emotion/HAPPY");
+				mood.play();
+    	
                 frm.dispose();
             }
         });
@@ -131,6 +136,7 @@ public class EmotionFrame extends JFrame {
         
         // good (1)
         btn[1].addActionListener(new ActionListener() {
+        	Audio mood;
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
@@ -144,6 +150,10 @@ public class EmotionFrame extends JFrame {
                 catch (IOException e) {
                     System.out.println(e);
                 }
+                
+                mood = new Audio("emotion/GOOD");
+				mood.play();
+				
                 frm.dispose();
             }
         });
@@ -181,6 +191,7 @@ public class EmotionFrame extends JFrame {
 		});
         // tired (2)
         btn[2].addActionListener(new ActionListener() {
+        	Audio mood;
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
@@ -194,6 +205,10 @@ public class EmotionFrame extends JFrame {
                 catch (IOException e) {
                     System.out.println(e);
                 }
+                
+                mood = new Audio("emotion/SO_SO");
+				mood.play();
+				
                 frm.dispose();
             }
         });
@@ -232,6 +247,7 @@ public class EmotionFrame extends JFrame {
         
         // bad (3)
         btn[3].addActionListener(new ActionListener() {
+        	Audio mood;
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
@@ -245,6 +261,8 @@ public class EmotionFrame extends JFrame {
                 catch (IOException e) {
                     System.out.println(e);
                 }
+                mood = new Audio("emotion/BAD");
+				mood.play();
                 frm.dispose();
             }
         });
@@ -282,6 +300,7 @@ public class EmotionFrame extends JFrame {
 		});
         // sad (4)
         btn[4].addActionListener(new ActionListener() {
+        	Audio mood;
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
@@ -295,6 +314,8 @@ public class EmotionFrame extends JFrame {
                 catch (IOException e) {
                     System.out.println(e);
                 }
+                mood = new Audio("emotion/BAD");
+     			mood.play();
                 frm.dispose();
             }
         });
@@ -332,6 +353,7 @@ public class EmotionFrame extends JFrame {
 		});
         // sick (5)
         btn[5].addActionListener(new ActionListener() {
+        	Audio mood;
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
@@ -345,6 +367,8 @@ public class EmotionFrame extends JFrame {
                 catch (IOException e) {
                     System.out.println(e);
                 }
+                mood = new Audio("emotion/SICK");
+     			mood.play();
                 frm.dispose();
             }
         });
