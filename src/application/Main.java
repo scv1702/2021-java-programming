@@ -73,7 +73,7 @@ public class Main {
 
 		JButton plangoToMenubtn = new JButton("");
 		JButton AddPlanbtn = new JButton("");
-		JButton goToMenu = new JButton(" �쐻 �윥�젆節낅쐻 �윥�뀷�슃�쐻 �윪甕�   �쐻 �윥�뵳 �뜝�럥���뜝�럥  �쐻 猷� �굲  �쐻 �윥�븰�닂�삕 �뇢�뜝�럡�꽣 �눀�뜝�뜴�쐻 �윥獒�  �뜝�럥�몡�넭怨ｋ쳲 留�, Kaily.");
+		JButton goToMenu = new JButton("Your Secretary for The Day, Kaily.");  // modify
 		JButton Planbtn = new JButton("");
 		JButton Trackerbtn = new JButton("");
 		JButton Moodbtn = new JButton("");
@@ -308,7 +308,7 @@ public class Main {
 				MonthBtn[1][i].setEnabled(false);
 			}
 		}
-
+		
 		
 		// Month : 7 (Panel)
 		ImagePanel MoodMonth07 = new ImagePanel(new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
@@ -480,8 +480,19 @@ public class Main {
 			}
 		}
 		
+		ImageIcon[] iconList = new ImageIcon[6];
+		iconList[0] = new ImageIcon("./data/images/mood/happy.png");
+		iconList[1] = new ImageIcon("./data/images/mood/good.png");
+		iconList[2] = new ImageIcon("./data/images/mood/tired.png");
+		iconList[3] = new ImageIcon("./data/images/mood/bad.png");
+		iconList[4] = new ImageIcon("./data/images/mood/sad.png");
+		iconList[5] = new ImageIcon("./data/images/mood/sick.png");
 		ImageIcon icon;
 		Image img;
+		int moodIndex = 0;
+		ArrayList<Integer> changeMonth = new ArrayList<Integer>();
+		ArrayList<Integer> changeDay = new ArrayList<Integer>();
+		ArrayList<Integer> moodNumber = new ArrayList<Integer>();
 		// if Mood save DB, then icon is image
 		String path = "./data/moodDB";
 		File dir = new File(path);
@@ -494,10 +505,10 @@ public class Main {
 				
 				int Idx = fileName .lastIndexOf(".");
 				String _fileName = fileName.substring(0, Idx );
-	
-				int changeMonth, changeDay;
-				changeMonth = Integer.parseInt(_fileName) / 100;
-				changeDay = Integer.parseInt(_fileName) - changeMonth * 100;
+				
+				changeMonth.add(Integer.parseInt(_fileName) / 100);
+				changeDay.add(Integer.parseInt(_fileName) - changeMonth.get(moodIndex) * 100);
+				moodIndex++;
 				
 				try {
 					FileReader filereadar = new FileReader(moodFile);
@@ -507,41 +518,16 @@ public class Main {
 		            
 		            
 		            while((line = bufReader.readLine()) != null) {
-		            	switch(Integer.parseInt(line)) {
-	            		case 0:
-	            			icon = new ImageIcon("./data/images/mood/happy.png");
-	            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-	            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-	            			break;
-	            		case 1:
-	            			icon = new ImageIcon("./data/images/mood/good.png");
-	            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-	            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-	            			break;
-	            		case 2:
-	            			icon = new ImageIcon("./data/images/mood/tired.png");
-	            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-	            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-	            			break;
-	            		case 3:
-	            			icon = new ImageIcon("./data/images/mood/bad.png");
-	            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-	            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-	            			break;
-	            		case 4:
-	            			icon = new ImageIcon("./data/images/mood/sad.png");
-	            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-	            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-	            			break;
-	            		case 5:
-	            			icon = new ImageIcon("./data/images/mood/sick.png");
-	            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-	            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-	            			break;
-	            		}
-		            	MonthBtn[changeMonth - 1][changeDay - 1].setEnabled(false);
+		            	moodNumber.add(Integer.parseInt(line));
 		            }
-		            bufReader.close();							
+		            bufReader.close();
+		            for(int i = 0; i < changeMonth.size(); i++) {
+		            	icon = iconList[moodNumber.get(i)];
+	        			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+	        			MonthBtn[changeMonth.get(i) - 1][changeDay.get(i) - 1].setIcon(new ImageIcon(img));
+		            }
+		            
+		            
 				}
 				catch (FileNotFoundException e1) {
 					System.out.println(e1);
@@ -773,6 +759,20 @@ public class Main {
 	    		File dir = new File(path);
 	    		File []fileList = dir.listFiles();
 	    		
+	    		ImageIcon[] iconList = new ImageIcon[6];
+	    		iconList[0] = new ImageIcon("./data/images/mood/happy.png");
+	    		iconList[1] = new ImageIcon("./data/images/mood/good.png");
+	    		iconList[2] = new ImageIcon("./data/images/mood/tired.png");
+	    		iconList[3] = new ImageIcon("./data/images/mood/bad.png");
+	    		iconList[4] = new ImageIcon("./data/images/mood/sad.png");
+	    		iconList[5] = new ImageIcon("./data/images/mood/sick.png");
+	    		ImageIcon icon;
+	    		Image img;
+	    		int moodIndex = 0;
+	    		ArrayList<Integer> changeMonth = new ArrayList<Integer>();
+	    		ArrayList<Integer> changeDay = new ArrayList<Integer>();
+	    		ArrayList<Integer> moodNumber = new ArrayList<Integer>();
+	    		
 	    		for(File file : fileList) {
 	    			if(file.isFile()) {
 	    				String fileName = file.getName();
@@ -782,9 +782,9 @@ public class Main {
 	    				int Idx = fileName .lastIndexOf(".");
 	    				String _fileName = fileName.substring(0, Idx );
 
-	    				int changeMonth, changeDay;
-	    				changeMonth = Integer.parseInt(_fileName) / 100;
-	    				changeDay = Integer.parseInt(_fileName) - changeMonth * 100;
+	    				changeMonth.add(Integer.parseInt(_fileName) / 100);
+	    				changeDay.add(Integer.parseInt(_fileName) - changeMonth.get(moodIndex) * 100);
+	    				moodIndex++;
 	    				
 	    				try {
 							FileReader filereadar = new FileReader(moodFile);
@@ -793,42 +793,14 @@ public class Main {
 				            String line = "";
 				            
 				            while((line = bufReader.readLine()) != null) {
-				            	switch(Integer.parseInt(line)) {
-			            		case 0:
-			            			icon = new ImageIcon("./data/images/mood/happy.png");
-			            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-			            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-			            			break;
-			            		case 1:
-			            			icon = new ImageIcon("./data/images/mood/good.png");
-			            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-			            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-			            			break;
-			            		case 2:
-			            			icon = new ImageIcon("./data/images/mood/tired.png");
-			            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-			            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-			            			break;
-			            		case 3:
-			            			icon = new ImageIcon("./data/images/mood/bad.png");
-			            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-			            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-			            			break;
-			            		case 4:
-			            			icon = new ImageIcon("./data/images/mood/sad.png");
-			            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-			            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-			            			break;
-			            		case 5:
-			            			icon = new ImageIcon("./data/images/mood/sick.png");
-			            			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-			            			MonthBtn[changeMonth - 1][changeDay - 1].setIcon(new ImageIcon(img));
-			            			break;
-			            		}
-				            	
-				            	MonthBtn[changeMonth - 1][changeDay - 1].setEnabled(false);
+				            	moodNumber.add(Integer.parseInt(line));
 				            }
-				            bufReader.close();							
+				            bufReader.close();
+				            for(int i = 0; i < changeMonth.size(); i++) {
+				            	icon = iconList[moodNumber.get(i)];
+			        			img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+			        			MonthBtn[changeMonth.get(i) - 1][changeDay.get(i) - 1].setIcon(new ImageIcon(img));
+				            }							
 						}
 	    				catch (FileNotFoundException e1) {
 							System.out.println(e1);
