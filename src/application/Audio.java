@@ -11,8 +11,8 @@ public class Audio {
 	String audioName;
 	Clip clip;
 	boolean isPlay;
-	
-	public Audio (String audioName) {
+
+	public Audio(String audioName) {
 		this.audioName = audioName;
 		this.isPlay = false;
 		try {
@@ -23,9 +23,9 @@ public class Audio {
 			System.out.println(e);
 		}
 	}
-	
-	public Audio () {
-		
+
+	public Audio() {
+
 		this.isPlay = false;
 		try {
 			audioIn = AudioSystem.getAudioInputStream(new File("./data/sound/" + audioName + ".wav"));
@@ -35,7 +35,7 @@ public class Audio {
 			System.out.println(e);
 		}
 	}
-	
+
 	public void change(String audioName) {
 		this.audioName = audioName;
 		stop();
@@ -47,13 +47,13 @@ public class Audio {
 			System.out.println(e);
 		}
 	}
-	
+
 	public void play() {
 		this.isPlay = true;
-        clip.start();
-        
-    }
-	
+		clip.start();
+
+	}
+
 	public void stop() {
 		this.isPlay = false;
 		clip.stop();
