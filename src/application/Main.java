@@ -45,7 +45,28 @@ public class Main {
 	public Main() {
 		initialize();
 	}
+	
+	public static String determineTagColor(String tag) {
+		
+		if (tag.equals(" Appointment ")) {
+			return String.format("%s","#CEF6D8");
+		}
+		else if (tag.equals(" School ")) {
+			return String.format("%s", "#CEECF5");
+		}
+		else if (tag.equals(" Meal ")) {
+			return String.format("%s", "#F6E3CE");
+		}
+		else if (tag.equals(" ETC ")) {
+			return String.format("%s", "#E6E0F8");
+		}
+		else if (tag.equals(" Exam ")) {
+			return String.format("%s", "#F6CECE");
+		}
+		return tag;
+	}
 
+	
 	public static void initialize() {
 		Audio audio = new Audio("schedule-initial");
 		
@@ -860,7 +881,7 @@ public class Main {
 				menuPanel.setVisible(true);
 			}		
 		});
-		goToMenu.setFont(new Font(" �쐻 �윞 猷� �쐻 �윥 鍮� �쐻 �윥�뜝�뜾堉� 癒��굲 �쐻 �윥 �윛  琉� 猷� �굲 �쐻 �윪�굢酉대쐻 �윥 肉쇔뜝�럥鍮� �쐻�뜝 ", Font.PLAIN, 24));
+		goToMenu.setFont(new Font(" �쐻 �윞 猷� �쐻 �윥 鍮� �쐻 �윥�뜝�뜾堉� 癒��굲 �쐻 �윥 �윛  琉� 猷� �굲 �쐻 �윪�굢酉대쐻 �윥 肉쇔뜝�럥鍮� �쐻�뜝 ", Font.PLAIN, 24));
 		
 		Planbtn.setBorderPainted(false);
 		Planbtn.setBackground(Color.WHITE);
@@ -1182,12 +1203,13 @@ public class Main {
 					
 					for (Day d : DB.dayDB) {
 						text += DB.searchScheduleList(d);
-						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family:  �쐻 �윞 猷� �쐻 �윥 鍮� �쐻 �윥�뜝�뜾堉� 癒��굲 �쐻 �윥 �윛  琉� 猷� �굲 �쐻 �윪�굢酉대쐻 �윥 肉쇔뜝�럥鍮� �쐻�뜝 ; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
+						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family: 나눔손글씨 가람연꽃; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p><hr align='left' width ='200px'></p>", 0, 0, null);
 						for (Schedule s : DB.searchScheduleList(d).scheduleList) {
-							String output = String.format("%02d : %02d ~ %02d : %02d %s %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent(), s.getTag());
+							String tag = String.format(" %s ", s.getTag());
+							String output = String.format("     %02d : %02d ~ %02d : %02d %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent());
 							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='6px'> <br> </font>", 0, 0, null);
-							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p style='font-family:  �쐻 �윞 猷� �쐻 �윥 鍮� �쐻 �윥�뜝�뜾堉� 癒��굲 �쐻 �윥 �윛  琉� 猷� �굲 �쐻 �윪�굢酉대쐻 �윥 肉쇔뜝�럥鍮� �쐻�뜝 ; font-size: 20px; color: black;'>" + output + "</p>", 0, 0, null);
+							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<span style='font-family: 나눔손글씨 가람연꽃; font-size: 20px; color: black;'> <span style='background-color:" + determineTagColor(tag) + ";'> &nbsp" + tag + "&nbsp</span>&nbsp&nbsp&nbsp " + output + "</span>", 0, 0, null);
 						}
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='20px'><br><br><br></font>", 0, 0, null);
 						Util.makeMp3(text, "schedule");
