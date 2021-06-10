@@ -35,6 +35,7 @@ public class Main {
 	public static JFrame frame;
 	public static JButton UpdatePlanbtn;
 	
+	
 	// Mood Calendar
 	static Calendar date = Calendar.getInstance();
 	static int yearMood = date.get(Calendar.YEAR);
@@ -44,6 +45,42 @@ public class Main {
 	/* Create the application. */
 	public Main() {
 		initialize();
+	}
+	
+	public static String digitalClock() {
+		String sday = null;
+		String _clock = null;
+		Calendar t = Calendar.getInstance();
+		int amPm = t.get(Calendar.AM_PM);
+		int hour = t.get(Calendar.HOUR);
+		int min = t.get(Calendar.MINUTE);
+		String ampm = amPm == Calendar.AM ? "PM":"AM";
+		int day = t.get(Calendar.DAY_OF_WEEK);
+		switch (day) {
+			case 1:
+				sday = "Sun";
+				break;
+			case 2:
+				sday = "Mon";
+				break;
+			case 3:
+				sday = "Tus";
+				break;
+			case 4:
+				sday = "Wed";
+				break;
+			case 5:
+				sday = "Thu";
+				break;
+			case 6:
+				sday = "Fri";
+				break;
+			case 7:
+				sday = "Sat";
+				break;
+		}
+		_clock = sday + " " + ampm + " " + hour + ":" + min;
+		return _clock;
 	}
 	
 	public static String determineTagColor(String tag) {
@@ -76,24 +113,6 @@ public class Main {
 		frame.setResizable(false);
 		
 		frame.setTitle("Knu Daily, Kaily");
-		
-		ImageIcon clickTracker = new ImageIcon("./data/images/Icon/Tracker_click_line.png");
-		ImageIcon clickPlan = new ImageIcon("./data/images/Icon/Plan_click_line.png");
-		ImageIcon clickMood = new ImageIcon("./data/images/Icon/Mood_click_line.png");
-		
-		ImagePanel startPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Kaily_start.png").getImage());
-		ImagePanel menuPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Kaily_menu.png").getImage());
-		ImagePanel MoodPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/MoodPanel.png").getImage());
-		ImagePanel TrackerPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/TrackerPanel_r.png").getImage());
-		ImagePanel monthlyTrackerPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Tracker_monthly_panel.png").getImage());
-		ImagePanel dailyTrackerPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Tracker_daily_panel.png").getImage());
-		ImagePanel PlanPanel =  new ImagePanel(new ImageIcon("./data/images/panel_page/PlanPanel.png").getImage());
-		
-		ImageIcon PlayIcon = new ImageIcon("./data/images/Icon/play.png");
-		ImageIcon PauseIcon = new ImageIcon("./data/images/Icon/Pause.png");
-
-		JButton plangoToMenubtn = new JButton("");
-		JButton AddPlanbtn = new JButton("");
 		JButton goToMenu = new JButton("Your Secretary for The Day, Kaily.");  // modify
 		JButton Planbtn = new JButton("");
 		JButton Trackerbtn = new JButton("");
@@ -103,36 +122,22 @@ public class Main {
 		JButton goToMonthlyTracker = new JButton("");
 		JButton monthlyToTracker = new JButton("");
 		JButton dailyToTracker = new JButton("");
-		JTextPane PlanPrintPanel = new JTextPane();
-		UpdatePlanbtn = new JButton("");
-		JButton Deletebtn = new JButton("");
-		JButton Backbtn = new JButton("");
-		JButton Playbtn = new JButton("");
-		JButton Forwardbtn = new JButton("");
-		
-		
-		AddPlanbtn.setIcon(new ImageIcon("./data/images/Icon/Add.png"));
 		Planbtn.setIcon(new ImageIcon("./data/images/Icon/Plan_r.png"));
 		Trackerbtn.setIcon(new ImageIcon("./data/images/Icon/Tracker_r.png"));
 		Moodbtn.setIcon(new ImageIcon("./data/images/Icon/Mood_r.png"));
-		Deletebtn.setIcon(new ImageIcon("./data/images/Icon/delete.png"));
-		Backbtn.setIcon(new ImageIcon("./data/images/Icon/back.png"));
-		Forwardbtn.setIcon(new ImageIcon("./data/images/Icon/fast-forward.png"));
-		UpdatePlanbtn.setIcon(new ImageIcon("./data/images/Icon/Update.png"));
 		
-//		ImageIcon clickTracker = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Tracker_click_line.png");
-//		ImageIcon clickPlan = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Plan_click_line.png");
-//		ImageIcon clickMood = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Mood_click_line.png");
-//		ImagePanel startPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_start.png").getImage());
-//		ImagePanel menuPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_menu.png").getImage());
-//		ImagePanel TrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/TrackerPanel.png").getImage());
-//		ImagePanel monthlyTrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_monthly_panel.png").getImage());
-//		ImagePanel dailyTrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_daily_panel.png").getImage());
-//		ImagePanel PlanPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/PlanPanel.png").getImage());
-//		ImageIcon PlayIcon = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/play.png");
-//		ImageIcon PauseIcon = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Pause.png");
-//		ImagePanel MoodPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/MoodPanel.png").getImage());
-//		
+		ImageIcon clickTracker = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Tracker_click_line.png");
+		ImageIcon clickPlan = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Plan_click_line.png");
+		ImageIcon clickMood = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Mood_click_line.png");
+		ImagePanel startPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_start.png").getImage());
+		ImagePanel menuPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_menu.png").getImage());
+		ImagePanel TrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/TrackerPanel.png").getImage());
+		ImagePanel monthlyTrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_monthly_panel.png").getImage());
+		ImagePanel dailyTrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_daily_panel.png").getImage());
+		ImageIcon PlayIcon = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/play.png");
+		ImageIcon PauseIcon = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Pause.png");
+		ImagePanel MoodPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/MoodPanel.png").getImage());
+		
 //		AddPlanbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Add.png"));
 //		Planbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Plan.png"));
 //		Trackerbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Tracker.png"));
@@ -146,11 +151,174 @@ public class Main {
 		TrackerPanel.setVisible(false);
 		monthlyTrackerPanel.setVisible(false);
 		dailyTrackerPanel.setVisible(false);
-		
-		PlanPanel.setVisible(false);
 		JButton moodgoToMenubtn = new JButton("");
 		
 		MoodPanel.setVisible(false);
+		
+//		ImageIcon clickTracker = new ImageIcon("./data/images/Icon/Tracker_click_line.png");
+//		ImageIcon clickPlan = new ImageIcon("./data/images/Icon/Plan_click_line.png");
+//		ImageIcon clickMood = new ImageIcon("./data/images/Icon/Mood_click_line.png");
+//		
+//		ImagePanel startPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Kaily_start.png").getImage());
+//		ImagePanel menuPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Kaily_menu.png").getImage());
+//		ImagePanel MoodPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/MoodPanel.png").getImage());
+//		ImagePanel TrackerPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/TrackerPanel_r.png").getImage());
+//		ImagePanel monthlyTrackerPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Tracker_monthly_panel.png").getImage());
+//		ImagePanel dailyTrackerPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Tracker_daily_panel.png").getImage());
+//		ImagePanel PlanPanel =  new ImagePanel(new ImageIcon("./data/images/panel_page/PlanPanel.png").getImage());
+//		
+//		ImageIcon PlayIcon = new ImageIcon("./data/images/Icon/play.png");
+//		ImageIcon PauseIcon = new ImageIcon("./data/images/Icon/Pause.png");
+
+		JButton plangoToMenubtn = new JButton("");
+		JButton AddPlanbtn = new JButton("");
+		JTextPane PlanPrintPanel = new JTextPane();
+		UpdatePlanbtn = new JButton("");
+		JButton Deletebtn = new JButton("");
+		JButton Backbtn = new JButton("");
+		JButton Playbtn = new JButton("");
+		JButton Forwardbtn = new JButton("");
+		
+		
+		AddPlanbtn.setIcon(new ImageIcon("./data/images/Icon/Add.png"));
+		Deletebtn.setIcon(new ImageIcon("./data/images/Icon/delete.png"));
+		Backbtn.setIcon(new ImageIcon("./data/images/Icon/back.png"));
+		Forwardbtn.setIcon(new ImageIcon("./data/images/Icon/fast-forward.png"));
+		UpdatePlanbtn.setIcon(new ImageIcon("./data/images/Icon/Update.png"));
+		ImagePanel PlanPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/PlanPanel.png").getImage());
+		
+		PlanPanel.setVisible(false);
+		
+		
+		frame.getContentPane().add(PlanPanel);
+		PlanPanel.setLayout(null);
+		
+		plangoToMenubtn.setBounds(1215, 25, 48, 46);
+		plangoToMenubtn.setBorderPainted(false);
+		plangoToMenubtn.setContentAreaFilled(false);
+		PlanPanel.add(plangoToMenubtn);
+		
+		plangoToMenubtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PlanPanel.setVisible(false);
+				menuPanel.setVisible(true);
+			}	
+		});
+		
+				AddPlanbtn.setBounds(365, 611, 61, 56);
+				AddPlanbtn.setBorderPainted(false);
+				PlanPanel.add(AddPlanbtn);
+				
+				AddPlanbtn.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						new MakeAddPlanFrame();
+					}
+				});
+				
+				PlanPrintPanel.setContentType("text/html");
+				PlanPrintPanel.setEditable(false);
+				JScrollPane ScrollPrint = new JScrollPane(PlanPrintPanel) {
+					public void setBorder(Border border) {
+						
+					}
+				};
+				ScrollPrint.setBounds(365, 90, 773, 509);
+				
+				PlanPrintPanel.setEditable(false);
+				PlanPrintPanel.setBounds(336, 90, 790, 509);
+				PlanPanel.add(ScrollPrint,BorderLayout.CENTER);
+				
+				StyledDocument doc = PlanPrintPanel.getStyledDocument();
+				
+		UpdatePlanbtn.setBounds(438, 611, 66, 56);
+		PlanPanel.add(UpdatePlanbtn);
+		UpdatePlanbtn.setBorderPainted(false);
+		
+		Deletebtn.setBounds(516, 611, 61, 63);
+		Deletebtn.setBorderPainted(false);
+		Deletebtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new DeletePlan();
+			}	
+		});
+		
+		PlanPanel.add(Deletebtn);
+		
+		Backbtn.setBounds(76, 351, 48, 46);
+		PlanPanel.add(Backbtn);
+		Backbtn.setBorderPainted(false);
+		
+		Playbtn.setIcon(PlayIcon);
+		Playbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if (audio.isPlay == true) {
+					audio.stop();
+					Playbtn.setIcon(PlayIcon);
+				} else {
+					Playbtn.setIcon(PauseIcon);
+					audio.play();
+					
+				}
+			}
+		});
+		
+		Playbtn.setBounds(152, 349, 48, 48);
+		PlanPanel.add(Playbtn);
+		Playbtn.setBorderPainted(false);
+		
+			Forwardbtn.setBounds(229, 351, 48, 46);
+			PlanPanel.add(Forwardbtn);
+			Forwardbtn.setBorderPainted(false);
+			
+			JLabel Clock = new JLabel("");
+			Clock.setFont(new Font("Digital-7 Italic", Font.PLAIN, 50));
+			Clock.setBounds(49, 127, 279, 72);
+			PlanPanel.add(Clock);
+			
+			UpdatePlanbtn.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					String text = "";
+					PlanPrintPanel.setText("");
+					try {
+						DB.updateDayDB();
+					} catch (IOException e2) {
+						System.out.println(e2);
+					}
+					
+					try {
+						HTMLEditorKit kit = new HTMLEditorKit();
+						HTMLDocument HtmlDoc = new HTMLDocument();
+						
+						PlanPrintPanel.setEditorKit(kit);
+						PlanPrintPanel.setDocument(HtmlDoc);
+						
+						for (Day d : DB.dayDB) {
+							text += DB.searchScheduleList(d);
+							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family: 나눔손글씨 가람연꽃; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
+							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p><hr align='left' width ='200px'></p>", 0, 0, null);
+							for (Schedule s : DB.searchScheduleList(d).scheduleList) {
+								String tag = String.format(" %s ", s.getTag());
+								String output = String.format("     %02d : %02d ~ %02d : %02d %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent());
+								kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='6px'> <br> </font>", 0, 0, null);
+								kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<span style='font-family: 나눔손글씨 가람연꽃; font-size: 20px; color: black;'> <span style='background-color:" + determineTagColor(tag) + ";'> &nbsp" + tag + "&nbsp</span>&nbsp&nbsp&nbsp " + output + "</span>", 0, 0, null);
+							}
+							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='20px'><br><br><br></font>", 0, 0, null);
+							Util.makeMp3(text, "schedule");
+							audio.change("schedule");
+							Clock.setText(digitalClock());
+						}
+	
+					} catch (Exception e1) {
+						System.out.println(e1);
+					}
+				}
+			});
 		frame.getContentPane().add(MoodPanel);
 		
 		
@@ -833,34 +1001,6 @@ public class Main {
 	    		}
 	    	}
 	    });
-	    
-	    
-		frame.getContentPane().add(PlanPanel);
-		PlanPanel.setLayout(null);
-		
-		plangoToMenubtn.setBounds(1215, 25, 48, 46);
-		plangoToMenubtn.setBorderPainted(false);
-		plangoToMenubtn.setContentAreaFilled(false);
-		PlanPanel.add(plangoToMenubtn);
-		
-		plangoToMenubtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				PlanPanel.setVisible(false);
-				menuPanel.setVisible(true);
-			}	
-		});
-
-		AddPlanbtn.setBounds(365, 611, 61, 56);
-		AddPlanbtn.setBorderPainted(false);
-		PlanPanel.add(AddPlanbtn);
-		
-		AddPlanbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new MakeAddPlanFrame();
-			}
-		});
 
 		frame.getContentPane().add(startPanel);
 		frame.getContentPane().add(menuPanel);
@@ -1122,105 +1262,8 @@ public class Main {
 				TrackerPanel.setVisible(true);
 			}
 		});
-		
-		PlanPrintPanel.setContentType("text/html");
-		PlanPrintPanel.setEditable(false);
-		JScrollPane ScrollPrint = new JScrollPane(PlanPrintPanel) {
-			public void setBorder(Border border) {
-				
-			}
-		};
-		ScrollPrint.setBounds(365, 90, 773, 509);
-		
-		PlanPrintPanel.setEditable(false);
-		PlanPrintPanel.setBounds(336, 90, 790, 509);
-		PlanPanel.add(ScrollPrint,BorderLayout.CENTER);
-		
-		StyledDocument doc = PlanPrintPanel.getStyledDocument();
 		SimpleAttributeSet styleSet = new SimpleAttributeSet();
 	    StyleConstants.setFontSize(styleSet, 20);
-	    
-		UpdatePlanbtn.setBounds(438, 611, 66, 56);
-		PlanPanel.add(UpdatePlanbtn);
-		UpdatePlanbtn.setBorderPainted(false);
-		
-		Deletebtn.setBounds(516, 611, 61, 63);
-		Deletebtn.setBorderPainted(false);
-		Deletebtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new DeletePlan();
-			}	
-		});
-		
-		PlanPanel.add(Deletebtn);
-		
-		Backbtn.setBounds(76, 351, 48, 46);
-		PlanPanel.add(Backbtn);
-		Backbtn.setBorderPainted(false);
-				
-		Playbtn.setIcon(PlayIcon);
-		Playbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				if (audio.isPlay == true) {
-					audio.stop();
-					Playbtn.setIcon(PlayIcon);
-				} else {
-					Playbtn.setIcon(PauseIcon);
-					audio.play();
-					
-				}
-			}
-		});
-		
-		Playbtn.setBounds(152, 349, 48, 48);
-		PlanPanel.add(Playbtn);
-		Playbtn.setBorderPainted(false);
-	
-		Forwardbtn.setBounds(229, 351, 48, 46);
-		PlanPanel.add(Forwardbtn);
-		Forwardbtn.setBorderPainted(false);
-		
-		UpdatePlanbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String text = "";
-				PlanPrintPanel.setText("");
-				try {
-					DB.updateDayDB();
-				} catch (IOException e2) {
-					System.out.println(e2);
-				}
-				
-				try {
-					HTMLEditorKit kit = new HTMLEditorKit();
-					HTMLDocument HtmlDoc = new HTMLDocument();
-					
-					PlanPrintPanel.setEditorKit(kit);
-					PlanPrintPanel.setDocument(HtmlDoc);
-					
-					for (Day d : DB.dayDB) {
-						text += DB.searchScheduleList(d);
-						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),"<p style='font-family: 나눔손글씨 가람연꽃; font-size: 25px; color: #323C73; font-weight: bold; font-style: italic;'>" + d + "</p>", 0, 0, null);
-						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<p><hr align='left' width ='200px'></p>", 0, 0, null);
-						for (Schedule s : DB.searchScheduleList(d).scheduleList) {
-							String tag = String.format(" %s ", s.getTag());
-							String output = String.format("     %02d : %02d ~ %02d : %02d %s", s.getStartHour(), s.getStartMin(), s.getFinishHour(), s.getFinishMin(), s.getContent());
-							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='6px'> <br> </font>", 0, 0, null);
-							kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<span style='font-family: 나눔손글씨 가람연꽃; font-size: 20px; color: black;'> <span style='background-color:" + determineTagColor(tag) + ";'> &nbsp" + tag + "&nbsp</span>&nbsp&nbsp&nbsp " + output + "</span>", 0, 0, null);
-						}
-						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(), "<font size='20px'><br><br><br></font>", 0, 0, null);
-						Util.makeMp3(text, "schedule");
-						audio.change("schedule");
-					}
-	
-				} catch (Exception e1) {
-					System.out.println(e1);
-				}
-			}
-		});
 		
 		frame.pack();
 	    

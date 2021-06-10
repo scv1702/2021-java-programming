@@ -239,6 +239,7 @@ public class MakeAddPlanFrame extends Main {
 				
 				/* 창 종료 */
 				AddPlanFrame.dispose();
+				UpdatePlanbtn.doClick();
 			}
 		});
 	}

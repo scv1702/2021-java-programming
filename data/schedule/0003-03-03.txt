@@ -1,2 +1,0 @@
-3, 3, 3, 3, ETC, ETC
-3, 3, 3, 3, Appointment, Appointment
