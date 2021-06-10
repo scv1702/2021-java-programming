@@ -40,6 +40,7 @@ public class Main {
 	static int yearMood = date.get(Calendar.YEAR);
 	static int monthMood = date.get(Calendar.MONTH) + 1;
 	static int dayMood = date.get(Calendar.DATE);
+	private static JLabel clock_time;
 
 	/* Create the application. */
 	public Main() {
@@ -53,32 +54,9 @@ public class Main {
 		int amPm = t.get(Calendar.AM_PM);
 		int hour = t.get(Calendar.HOUR);
 		int min = t.get(Calendar.MINUTE);
-		String ampm = amPm == Calendar.AM ? "PM" : "AM";
 		int day = t.get(Calendar.DAY_OF_WEEK);
-		switch (day) {
-		case 1:
-			sday = "Sun";
-			break;
-		case 2:
-			sday = "Mon";
-			break;
-		case 3:
-			sday = "Tus";
-			break;
-		case 4:
-			sday = "Wed";
-			break;
-		case 5:
-			sday = "Thu";
-			break;
-		case 6:
-			sday = "Fri";
-			break;
-		case 7:
-			sday = "Sat";
-			break;
-		}
-		_clock = sday + " " + ampm + " " + hour + ":" + min;
+
+		_clock = String.format("%02d : %02d", hour, min);
 		return _clock;
 	}
 
@@ -120,26 +98,46 @@ public class Main {
 		Trackerbtn.setIcon(new ImageIcon("./data/images/Icon/Tracker_r.png"));
 		Moodbtn.setIcon(new ImageIcon("./data/images/Icon/Mood_r.png"));
 
-//		ImageIcon clickTracker = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Tracker_click_line.png");
-//		ImageIcon clickPlan = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Plan_click_line.png");
-//		ImageIcon clickMood = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Mood_click_line.png");
-//		ImagePanel startPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_start.png").getImage());
-//		ImagePanel menuPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_menu.png").getImage());
-//		ImagePanel TrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/TrackerPanel.png").getImage());
-//		ImagePanel monthlyTrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_monthly_panel.png").getImage());
-//		ImagePanel dailyTrackerPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_daily_panel.png").getImage());
+//		ImageIcon clickTracker = new ImageIcon(
+//				"/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Tracker_click_line.png");
+//		ImageIcon clickPlan = new ImageIcon(
+//				"/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Plan_click_line.png");
+//		ImageIcon clickMood = new ImageIcon(
+//				"/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Mood_click_line.png");
+//		ImagePanel startPanel = new ImagePanel(
+//				new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_start.png")
+//						.getImage());
+//		ImagePanel menuPanel = new ImagePanel(
+//				new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_menu.png")
+//						.getImage());
+//		ImagePanel TrackerPanel = new ImagePanel(
+//				new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/TrackerPanel.png")
+//						.getImage());
+//		ImagePanel monthlyTrackerPanel = new ImagePanel(new ImageIcon(
+//				"/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_monthly_panel.png")
+//						.getImage());
+//		ImagePanel dailyTrackerPanel = new ImagePanel(new ImageIcon(
+//				"/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_daily_panel.png")
+//						.getImage());
 //		ImageIcon PlayIcon = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/play.png");
 //		ImageIcon PauseIcon = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Pause.png");
-//		ImagePanel MoodPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/MoodPanel.png").getImage());
-//		ImagePanel PlanPanel = new ImagePanel(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/PlanPanel.png").getImage());
+//		ImagePanel MoodPanel = new ImagePanel(
+//				new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/MoodPanel.png")
+//						.getImage());
+
+		JButton plangoToMenubtn = new JButton("");
+		JButton AddPlanbtn = new JButton("");
+		JTextPane PlanPrintPanel = new JTextPane();
+		UpdatePlanbtn = new JButton("");
+		JButton Deletebtn = new JButton("");
+		JButton Playbtn = new JButton("");
+
 //		AddPlanbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Add.png"));
 //		Planbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Plan.png"));
 //		Trackerbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Tracker.png"));
 //		Moodbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Mood.png"));
 //		Deletebtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/delete.png"));
-//		Backbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/back.png"));
-//		Forwardbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/fast-forward.png"));
-//		UpdatePlanbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Update.png"));		
+//		UpdatePlanbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Update.png"));
 
 		ImageIcon clickTracker = new ImageIcon("./data/images/Icon/Tracker_click_line.png");
 		ImageIcon clickPlan = new ImageIcon("./data/images/Icon/Plan_click_line.png");
@@ -159,14 +157,12 @@ public class Main {
 		ImageIcon PlayIcon = new ImageIcon("./data/images/Icon/play.png");
 		ImageIcon PauseIcon = new ImageIcon("./data/images/Icon/Pause.png");
 
-		JButton plangoToMenubtn = new JButton("");
-		JButton AddPlanbtn = new JButton("");
-		JTextPane PlanPrintPanel = new JTextPane();
-		UpdatePlanbtn = new JButton("");
-		JButton Deletebtn = new JButton("");
-		JButton Backbtn = new JButton("");
-		JButton Playbtn = new JButton("");
-		JButton Forwardbtn = new JButton("");
+		AddPlanbtn.setIcon(new ImageIcon("./data/images/Icon/Add.png"));
+		Deletebtn.setIcon(new ImageIcon("./data/images/Icon/delete.png"));
+		UpdatePlanbtn.setIcon(new ImageIcon("./data/images/Icon/Update.png"));
+//		ImagePanel PlanPanel = new ImagePanel(
+//				new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/PlanPanel.png")
+//						.getImage());
 
 		menuPanel.setVisible(false);
 		TrackerPanel.setVisible(false);
@@ -175,13 +171,6 @@ public class Main {
 		JButton moodgoToMenubtn = new JButton("");
 
 		MoodPanel.setVisible(false);
-
-		AddPlanbtn.setIcon(new ImageIcon("./data/images/Icon/Add.png"));
-		Deletebtn.setIcon(new ImageIcon("./data/images/Icon/delete.png"));
-		Backbtn.setIcon(new ImageIcon("./data/images/Icon/back.png"));
-		Forwardbtn.setIcon(new ImageIcon("./data/images/Icon/fast-forward.png"));
-		UpdatePlanbtn.setIcon(new ImageIcon("./data/images/Icon/Update.png"));
-
 		PlanPanel.setVisible(false);
 
 		frame.getContentPane().add(PlanPanel);
@@ -200,7 +189,7 @@ public class Main {
 			}
 		});
 
-		AddPlanbtn.setBounds(365, 611, 61, 56);
+		AddPlanbtn.setBounds(40, 635, 61, 56);
 		AddPlanbtn.setBorderPainted(false);
 		PlanPanel.add(AddPlanbtn);
 
@@ -218,7 +207,7 @@ public class Main {
 
 			}
 		};
-		ScrollPrint.setBounds(365, 90, 773, 509);
+		ScrollPrint.setBounds(154, 116, 807, 478);
 
 		PlanPrintPanel.setEditable(false);
 		PlanPrintPanel.setBounds(336, 90, 790, 509);
@@ -226,11 +215,11 @@ public class Main {
 
 		StyledDocument doc = PlanPrintPanel.getStyledDocument();
 
-		UpdatePlanbtn.setBounds(438, 611, 66, 56);
+		UpdatePlanbtn.setBounds(110, 635, 66, 56);
 		PlanPanel.add(UpdatePlanbtn);
 		UpdatePlanbtn.setBorderPainted(false);
 
-		Deletebtn.setBounds(516, 611, 61, 63);
+		Deletebtn.setBounds(181, 633, 61, 63);
 		Deletebtn.setBorderPainted(false);
 		Deletebtn.addActionListener(new ActionListener() {
 			@Override
@@ -240,10 +229,6 @@ public class Main {
 		});
 
 		PlanPanel.add(Deletebtn);
-
-		Backbtn.setBounds(76, 351, 48, 46);
-		PlanPanel.add(Backbtn);
-		Backbtn.setBorderPainted(false);
 
 		Playbtn.setIcon(PlayIcon);
 		Playbtn.addActionListener(new ActionListener() {
@@ -261,18 +246,15 @@ public class Main {
 			}
 		});
 
-		Playbtn.setBounds(152, 349, 48, 48);
+		Playbtn.setBounds(253, 635, 61, 63);
 		PlanPanel.add(Playbtn);
 		Playbtn.setBorderPainted(false);
 
-		Forwardbtn.setBounds(229, 351, 48, 46);
-		PlanPanel.add(Forwardbtn);
-		Forwardbtn.setBorderPainted(false);
-
-		JLabel Clock = new JLabel("");
-		Clock.setFont(new Font("Digital-7 Italic", Font.PLAIN, 50));
-		Clock.setBounds(49, 127, 279, 72);
-		PlanPanel.add(Clock);
+		clock_time = new JLabel("");
+		clock_time.setForeground(new Color(153, 0, 51));
+		clock_time.setFont(new Font("Digital-7 Italic", Font.PLAIN, 70));
+		clock_time.setBounds(1045, 597, 190, 78);
+		PlanPanel.add(clock_time);
 
 		UpdatePlanbtn.addActionListener(new ActionListener() {
 			@Override
@@ -315,7 +297,7 @@ public class Main {
 								null);
 						Util.makeMp3(text, "schedule");
 						audio.change("schedule");
-						Clock.setText(digitalClock());
+						clock_time.setText(digitalClock());
 					}
 
 				} catch (Exception e1) {
@@ -960,7 +942,6 @@ public class Main {
 								icon = iconList[moodNumber.get(i)];
 								img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 								MonthBtn[changeMonth.get(i) - 1][changeDay.get(i) - 1].setIcon(new ImageIcon(img));
-
 							}
 						} catch (FileNotFoundException e1) {
 							System.out.println(e1);
@@ -991,8 +972,7 @@ public class Main {
 				menuPanel.setVisible(true);
 			}
 		});
-		goToMenu.setFont(new Font(" �쐻 �윞 猷� �쐻 �윥 鍮� �쐻 �윥�뜝�뜾堉� 癒��굲 �쐻 �윥 �윛  琉� 猷� �굲 �쐻 �윪�굢酉대쐻 �윥 肉쇔뜝�럥鍮� �쐻�뜝 ",
-				Font.PLAIN, 24));
+		goToMenu.setFont(new Font("나눔손글씨 가람연꽃", Font.PLAIN, 24));
 
 		Planbtn.setBorderPainted(false);
 		Planbtn.setBackground(Color.WHITE);
