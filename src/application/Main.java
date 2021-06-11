@@ -1,5 +1,10 @@
-package application;
+/* Main code for Kaily 
+ * 
+ * Last Change: 2021.6.12 Yoon
+ *   add Comment and arrange
+ */
 
+package application;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -47,6 +52,8 @@ public class Main {
 		initialize();
 	}
 
+	
+	// Calculate current clock
 	public static String digitalClock() {
 		String sday = null;
 		String _clock = null;
@@ -60,6 +67,7 @@ public class Main {
 		return _clock;
 	}
 
+	// Determining the Tag text background color for each Plan
 	public static String determineTagColor(String tag) {
 
 		if (tag.equals(" Appointment ")) {
@@ -75,74 +83,22 @@ public class Main {
 		}
 		return tag;
 	}
-
+	
+		
+	// Main Code
 	public static void initialize() {
 		Audio audio = new Audio("schedule-initial");
-
+		
+		/* ---------------- Frame ---------------------------- */
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-
 		frame.setTitle("Knu Daily, Kaily");
-		JButton goToMenu = new JButton("Your Secretary for The Day, Kaily."); // modify
-		JButton Planbtn = new JButton("");
-		JButton Trackerbtn = new JButton("");
-		JButton Moodbtn = new JButton("");
-		JButton trackergoToMenubtn = new JButton("");
-		JButton goToDailyTrackerbtn = new JButton("");
-		JButton goToMonthlyTracker = new JButton("");
-		JButton monthlyToTracker = new JButton("");
-		JButton dailyToTracker = new JButton("");
-		Planbtn.setIcon(new ImageIcon("./data/images/Icon/Plan_r.png"));
-		Trackerbtn.setIcon(new ImageIcon("./data/images/Icon/Tracker_r.png"));
-		Moodbtn.setIcon(new ImageIcon("./data/images/Icon/Mood_r.png"));
-
-//		ImageIcon clickTracker = new ImageIcon(
-//				"/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Tracker_click_line.png");
-//		ImageIcon clickPlan = new ImageIcon(
-//				"/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Plan_click_line.png");
-//		ImageIcon clickMood = new ImageIcon(
-//				"/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Mood_click_line.png");
-//		ImagePanel startPanel = new ImagePanel(
-//				new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_start.png")
-//						.getImage());
-//		ImagePanel menuPanel = new ImagePanel(
-//				new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Kaily_menu.png")
-//						.getImage());
-//		ImagePanel TrackerPanel = new ImagePanel(
-//				new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/TrackerPanel.png")
-//						.getImage());
-//		ImagePanel monthlyTrackerPanel = new ImagePanel(new ImageIcon(
-//				"/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_monthly_panel.png")
-//						.getImage());
-//		ImagePanel dailyTrackerPanel = new ImagePanel(new ImageIcon(
-//				"/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/Tracker_daily_panel.png")
-//						.getImage());
-//		ImageIcon PlayIcon = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/play.png");
-//		ImageIcon PauseIcon = new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Pause.png");
-//		ImagePanel MoodPanel = new ImagePanel(
-//				new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/MoodPanel.png")
-//						.getImage());
-
-		JButton plangoToMenubtn = new JButton("");
-		JButton AddPlanbtn = new JButton("");
-		JTextPane PlanPrintPanel = new JTextPane();
-		UpdatePlanbtn = new JButton("");
-		JButton Deletebtn = new JButton("");
-		JButton Playbtn = new JButton("");
-
-//		AddPlanbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Add.png"));
-//		Planbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Plan.png"));
-//		Trackerbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Tracker.png"));
-//		Moodbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Mood.png"));
-//		Deletebtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/delete.png"));
-//		UpdatePlanbtn.setIcon(new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/Icon/Update.png"));
-
-		ImageIcon clickTracker = new ImageIcon("./data/images/Icon/Tracker_click_line.png");
-		ImageIcon clickPlan = new ImageIcon("./data/images/Icon/Plan_click_line.png");
-		ImageIcon clickMood = new ImageIcon("./data/images/Icon/Mood_click_line.png");
-
+		
+		
+		/* ---------------- Panel ---------------------------- */
+			// Make Panel
 		ImagePanel startPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Kaily_start.png").getImage());
 		ImagePanel menuPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Kaily_menu.png").getImage());
 		ImagePanel MoodPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/MoodPanel.png").getImage());
@@ -153,29 +109,165 @@ public class Main {
 		ImagePanel dailyTrackerPanel = new ImagePanel(
 				new ImageIcon("./data/images/panel_page/Tracker_daily_panel.png").getImage());
 		ImagePanel PlanPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/PlanPanel.png").getImage());
+		JTextPane PlanPrintPanel = new JTextPane();
+		JScrollPane ScrollPrint = new JScrollPane(PlanPrintPanel) {
+			public void setBorder(Border border) {
 
+			}
+		};
+			// Make Mood Panel
+		ImagePanel MoodMonth01 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+		ImagePanel MoodMonth02 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/28_Panel.png").getImage());
+		ImagePanel MoodMonth03 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+		ImagePanel MoodMonth04 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
+		ImagePanel MoodMonth05 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+		ImagePanel MoodMonth06 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
+		ImagePanel MoodMonth07 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+		ImagePanel MoodMonth08 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+		ImagePanel MoodMonth09 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
+		ImagePanel MoodMonth10 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+		ImagePanel MoodMonth11 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
+		ImagePanel MoodMonth12 = new ImagePanel(
+				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+		
+			// Set Panel
+		MoodPanel.setVisible(false);
+		PlanPanel.setVisible(false);
+		menuPanel.setVisible(false);
+		
+		PlanPanel.setLayout(null);
+		
+		PlanPrintPanel.setContentType("text/html");
+		PlanPrintPanel.setEditable(false);
+	
+		frame.getContentPane().add(menuPanel);
+		frame.getContentPane().add(PlanPanel);
+		frame.getContentPane().add(MoodPanel);
+		frame.getContentPane().add(startPanel);
+
+		frame.setSize(startPanel.getDim());
+		frame.setPreferredSize(startPanel.getDim());
+		
+		
+		ScrollPrint.setBounds(154, 116, 807, 478);
+		PlanPrintPanel.setEditable(false);
+		PlanPrintPanel.setBounds(336, 90, 790, 509);
+		PlanPanel.add(ScrollPrint, BorderLayout.CENTER);
+
+		StyledDocument doc = PlanPrintPanel.getStyledDocument();
+		
+		
+
+		
+		
+		/* ---------------- Icon ---------------------------- */
+		ImageIcon clickTracker = new ImageIcon("./data/images/Icon/Tracker_click_line.png");
+		ImageIcon clickPlan = new ImageIcon("./data/images/Icon/Plan_click_line.png");
+		ImageIcon clickMood = new ImageIcon("./data/images/Icon/Mood_click_line.png");
 		ImageIcon PlayIcon = new ImageIcon("./data/images/Icon/play.png");
 		ImageIcon PauseIcon = new ImageIcon("./data/images/Icon/Pause.png");
+		
+		
 
+		/* ---------------- Button ---------------------------- */
+			// Make the Button
+		JButton plangoToMenubtn = new JButton("");
+		JButton AddPlanbtn = new JButton("");
+		JButton moodgoToMenubtn = new JButton("");
+		UpdatePlanbtn = new JButton("");
+		JButton Deletebtn = new JButton("");
+		JButton Playbtn = new JButton("");
+		JButton goToMenu = new JButton("Your Secretary for The Day, Kaily.");
+		JButton Planbtn = new JButton("");
+		JButton Moodbtn = new JButton("");
+		JButton MonthBtn[][] = new JButton[12][];
+		
+			// Set the Icon
 		AddPlanbtn.setIcon(new ImageIcon("./data/images/Icon/Add.png"));
 		Deletebtn.setIcon(new ImageIcon("./data/images/Icon/delete.png"));
 		UpdatePlanbtn.setIcon(new ImageIcon("./data/images/Icon/Update.png"));
-//		ImagePanel PlanPanel = new ImagePanel(
-//				new ImageIcon("/Users/ellie/Desktop/2021-java-programming/data/images/panel_page/PlanPanel.png")
-//						.getImage());
+		Planbtn.setIcon(new ImageIcon("./data/images/Icon/Plan_r.png"));
+		Moodbtn.setIcon(new ImageIcon("./data/images/Icon/Mood_r.png"));
+		
+			// Plan Button
+		Planbtn.setBorderPainted(false);
+		Planbtn.setBackground(Color.WHITE);
+		Planbtn.setBounds(322, 324, 90, 55);
+		Planbtn.setRolloverIcon(clickPlan);
+		menuPanel.add(Planbtn);
+		Planbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuPanel.setVisible(false);
+				PlanPanel.setVisible(true);
+			}
+		});
+		
+			// Mood Button
+		Moodbtn.setBorderPainted(false);
+		Moodbtn.setBackground(Color.WHITE);
+		Moodbtn.setBounds(851, 324, 120, 51);
+		Moodbtn.setRolloverIcon(clickMood);
+		menuPanel.add(Moodbtn);
+		Moodbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuPanel.setVisible(false);
+				MoodPanel.setVisible(true);
 
-		menuPanel.setVisible(false);
-		TrackerPanel.setVisible(false);
-		monthlyTrackerPanel.setVisible(false);
-		dailyTrackerPanel.setVisible(false);
-		JButton moodgoToMenubtn = new JButton("");
-
-		MoodPanel.setVisible(false);
-		PlanPanel.setVisible(false);
-
-		frame.getContentPane().add(PlanPanel);
-		PlanPanel.setLayout(null);
-
+				switch (monthMood) {
+				case 1:
+					MoodMonth01.setVisible(true);
+					break;
+				case 2:
+					MoodMonth02.setVisible(true);
+					break;
+				case 3:
+					MoodMonth03.setVisible(true);
+					break;
+				case 4:
+					MoodMonth04.setVisible(true);
+					break;
+				case 5:
+					MoodMonth05.setVisible(true);
+					break;
+				case 6:
+					MoodMonth06.setVisible(true);
+					break;
+				case 7:
+					MoodMonth07.setVisible(true);
+					break;
+				case 8:
+					MoodMonth08.setVisible(true);
+					break;
+				case 9:
+					MoodMonth09.setVisible(true);
+					break;
+				case 10:
+					MoodMonth10.setVisible(true);
+					break;
+				case 11:
+					MoodMonth11.setVisible(true);
+					break;
+				case 12:
+					MoodMonth12.setVisible(true);
+					break;
+				}
+			}
+		});
+		
+			// Plan -> Menu Button
 		plangoToMenubtn.setBounds(1215, 25, 48, 46);
 		plangoToMenubtn.setBorderPainted(false);
 		plangoToMenubtn.setContentAreaFilled(false);
@@ -188,7 +280,8 @@ public class Main {
 				menuPanel.setVisible(true);
 			}
 		});
-
+		
+			// Add Plan Button
 		AddPlanbtn.setBounds(40, 635, 61, 56);
 		AddPlanbtn.setBorderPainted(false);
 		PlanPanel.add(AddPlanbtn);
@@ -199,26 +292,13 @@ public class Main {
 				new MakeAddPlanFrame();
 			}
 		});
-
-		PlanPrintPanel.setContentType("text/html");
-		PlanPrintPanel.setEditable(false);
-		JScrollPane ScrollPrint = new JScrollPane(PlanPrintPanel) {
-			public void setBorder(Border border) {
-
-			}
-		};
-		ScrollPrint.setBounds(154, 116, 807, 478);
-
-		PlanPrintPanel.setEditable(false);
-		PlanPrintPanel.setBounds(336, 90, 790, 509);
-		PlanPanel.add(ScrollPrint, BorderLayout.CENTER);
-
-		StyledDocument doc = PlanPrintPanel.getStyledDocument();
-
+		
+			// Update Plan Button
 		UpdatePlanbtn.setBounds(110, 635, 66, 56);
 		PlanPanel.add(UpdatePlanbtn);
 		UpdatePlanbtn.setBorderPainted(false);
-
+		
+			// Delete Plan Button
 		Deletebtn.setBounds(181, 633, 61, 63);
 		Deletebtn.setBorderPainted(false);
 		Deletebtn.addActionListener(new ActionListener() {
@@ -227,9 +307,9 @@ public class Main {
 				new DeletePlan();
 			}
 		});
-
 		PlanPanel.add(Deletebtn);
-
+		
+			// Audio Play Button
 		Playbtn.setIcon(PlayIcon);
 		Playbtn.addActionListener(new ActionListener() {
 			@Override
@@ -241,21 +321,14 @@ public class Main {
 				} else {
 					Playbtn.setIcon(PauseIcon);
 					audio.play();
-
 				}
 			}
 		});
-
 		Playbtn.setBounds(253, 635, 61, 63);
 		PlanPanel.add(Playbtn);
 		Playbtn.setBorderPainted(false);
-
-		clock_time = new JLabel("");
-		clock_time.setForeground(new Color(153, 0, 51));
-		clock_time.setFont(new Font("Digital-7 Italic", Font.PLAIN, 70));
-		clock_time.setBounds(1045, 597, 190, 78);
-		PlanPanel.add(clock_time);
-
+		
+			// Update Plan Button
 		UpdatePlanbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -305,15 +378,22 @@ public class Main {
 				}
 			}
 		});
-		frame.getContentPane().add(MoodPanel);
+		
+		
+		
+		/* ---------------- Label ---------------------------- */
 
-		// Create MonthPanel to use moodPanel
-		// All Day Button
-		JButton MonthBtn[][] = new JButton[12][];
+			// Clock Label
+		clock_time = new JLabel("");
+		clock_time.setForeground(new Color(153, 0, 51));
+		clock_time.setFont(new Font("Digital-7 Italic", Font.PLAIN, 70));
+		clock_time.setBounds(1045, 597, 190, 78);
+		PlanPanel.add(clock_time);
 
-		// Month : 1 (Panel)
-		ImagePanel MoodMonth01 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+		
+
+		/* ---------------- Mood Panel ---------------------------- */
+		
 		MoodMonth01.setLayout(new GridLayout(5, 7));
 		MoodMonth01.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth01);
@@ -337,8 +417,7 @@ public class Main {
 		}
 
 		// Month : 2 (Panel)
-		ImagePanel MoodMonth02 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/28_Panel.png").getImage());
+		
 		MoodMonth02.setLayout(new GridLayout(5, 7));
 		MoodMonth02.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth02);
@@ -367,8 +446,6 @@ public class Main {
 		}
 
 		// Month : 3 (Panel)
-		ImagePanel MoodMonth03 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
 		MoodMonth03.setLayout(new GridLayout(5, 7));
 		MoodMonth03.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth03);
@@ -392,8 +469,6 @@ public class Main {
 		}
 
 		// Month : 4 (Panel)
-		ImagePanel MoodMonth04 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
 		MoodMonth04.setLayout(new GridLayout(5, 7));
 		MoodMonth04.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth04);
@@ -422,8 +497,6 @@ public class Main {
 		}
 
 		// Month : 5 (Panel)
-		ImagePanel MoodMonth05 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
 		MoodMonth05.setLayout(new GridLayout(5, 7));
 		MoodMonth05.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth05);
@@ -447,8 +520,6 @@ public class Main {
 		}
 
 		// Month : 6 (Panel)
-		ImagePanel MoodMonth06 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
 		MoodMonth06.setLayout(new GridLayout(5, 7));
 		MoodMonth06.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth06);
@@ -476,8 +547,7 @@ public class Main {
 		}
 
 		// Month : 7 (Panel)
-		ImagePanel MoodMonth07 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+
 		MoodMonth07.setLayout(new GridLayout(5, 7));
 		MoodMonth07.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth07);
@@ -501,8 +571,6 @@ public class Main {
 		}
 
 		// Month : 8 (Panel)
-		ImagePanel MoodMonth08 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
 		MoodMonth08.setLayout(new GridLayout(5, 7));
 		MoodMonth08.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth08);
@@ -526,8 +594,6 @@ public class Main {
 		}
 
 		// Month : 9 (Panel)
-		ImagePanel MoodMonth09 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
 		MoodMonth09.setLayout(new GridLayout(5, 7));
 		MoodMonth09.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth09);
@@ -555,8 +621,6 @@ public class Main {
 		}
 
 		// Month : 10 (Panel)
-		ImagePanel MoodMonth10 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
 		MoodMonth10.setLayout(new GridLayout(5, 7));
 		MoodMonth10.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth10);
@@ -580,8 +644,6 @@ public class Main {
 		}
 
 		// Month : 11 (Panel)
-		ImagePanel MoodMonth11 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
 		MoodMonth11.setLayout(new GridLayout(5, 7));
 		MoodMonth11.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth11);
@@ -609,8 +671,7 @@ public class Main {
 		}
 
 		// Month : 12 (Panel)
-		ImagePanel MoodMonth12 = new ImagePanel(
-				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
+
 		MoodMonth12.setLayout(new GridLayout(5, 7));
 		MoodMonth12.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth12);
@@ -697,24 +758,24 @@ public class Main {
 			monthLB.setText(Integer.toString(monthMood));
 		}
 
-		JButton prevMonthBtn = new JButton("��");
-		JButton nextMonthBtn = new JButton("�뼳");
+		JButton prevMonthBtn = new JButton("◀");
+		JButton nextMonthBtn = new JButton("▶");
 
 		yearLB.setBounds(1127, 22, 100, 46);
-		yearLB.setFont(new Font("�뜝�럡�룎�뜝�럥�빖 �뫁伊볣�� ", Font.BOLD, 15));
+		yearLB.setFont(new Font("나눔 고딕", Font.BOLD, 15));
 
 		monthLB.setBounds(1126, 50, 50, 46);
-		monthLB.setFont(new Font("�뜝�럡�룎�뜝�럥�빖 �뫁伊볣�� ", Font.BOLD, 30));
+		monthLB.setFont(new Font("나눔 고딕", Font.BOLD, 30));
 
 		prevMonthBtn.setBounds(1070, 36, 70, 46);
 		prevMonthBtn.setBorderPainted(false);
 		prevMonthBtn.setContentAreaFilled(false);
-		prevMonthBtn.setFont(new Font("�뜝�럡�룎�뜝�럥�빖 �뫁伊볣�� ", Font.BOLD, 25));
+		prevMonthBtn.setFont(new Font("나눔 고딕", Font.BOLD, 25));
 
 		nextMonthBtn.setBounds(1147, 36, 70, 46);
 		nextMonthBtn.setBorderPainted(false);
 		nextMonthBtn.setContentAreaFilled(false);
-		nextMonthBtn.setFont(new Font("�뜝�럡�룎�뜝�럥�빖 �뫁伊볣�� ", Font.BOLD, 25));
+		nextMonthBtn.setFont(new Font("나눔 고딕", Font.BOLD, 25));
 
 		MoodPanel.add(yearLB);
 		MoodPanel.add(monthLB);
@@ -953,14 +1014,7 @@ public class Main {
 			}
 		});
 
-		frame.getContentPane().add(startPanel);
-		frame.getContentPane().add(menuPanel);
-		frame.getContentPane().add(TrackerPanel);
-		frame.getContentPane().add(dailyTrackerPanel);
-		frame.getContentPane().add(monthlyTrackerPanel);
 
-		frame.setSize(startPanel.getDim());
-		frame.setPreferredSize(startPanel.getDim());
 
 		goToMenu.setBounds(431, 402, 483, 71);
 		startPanel.add(goToMenu);
@@ -974,242 +1028,13 @@ public class Main {
 		});
 		goToMenu.setFont(new Font("나눔손글씨 가람연꽃", Font.PLAIN, 24));
 
-		Planbtn.setBorderPainted(false);
-		Planbtn.setBackground(Color.WHITE);
-		Planbtn.setBounds(586, 58, 90, 55);
-		Planbtn.setRolloverIcon(clickPlan);
-		menuPanel.add(Planbtn);
-
-		Planbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				menuPanel.setVisible(false);
-				PlanPanel.setVisible(true);
-			}
-		});
-
-		Trackerbtn.setBorderPainted(false);
-		Trackerbtn.setBackground(Color.WHITE);
-		Trackerbtn.setBounds(334, 484, 140, 56);
-		Trackerbtn.setRolloverIcon(clickTracker);
-
-		menuPanel.add(Trackerbtn);
-
-		Trackerbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				menuPanel.setVisible(false);
-				TrackerPanel.setVisible(true);
-			}
-		});
-
-		Moodbtn.setBorderPainted(false);
-		Moodbtn.setBackground(Color.WHITE);
-		Moodbtn.setBounds(809, 484, 120, 51);
-		Moodbtn.setRolloverIcon(clickMood);
-		menuPanel.add(Moodbtn);
-
-		Moodbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				menuPanel.setVisible(false);
-				MoodPanel.setVisible(true);
-
-				switch (monthMood) {
-				case 1:
-					MoodMonth01.setVisible(true);
-					break;
-				case 2:
-					MoodMonth02.setVisible(true);
-					break;
-				case 3:
-					MoodMonth03.setVisible(true);
-					break;
-				case 4:
-					MoodMonth04.setVisible(true);
-					break;
-				case 5:
-					MoodMonth05.setVisible(true);
-					break;
-				case 6:
-					MoodMonth06.setVisible(true);
-					break;
-				case 7:
-					MoodMonth07.setVisible(true);
-					break;
-				case 8:
-					MoodMonth08.setVisible(true);
-					break;
-				case 9:
-					MoodMonth09.setVisible(true);
-					break;
-				case 10:
-					MoodMonth10.setVisible(true);
-					break;
-				case 11:
-					MoodMonth11.setVisible(true);
-					break;
-				case 12:
-					MoodMonth12.setVisible(true);
-					break;
-				}
-			}
-		});
-
-		trackergoToMenubtn.setBounds(1213, 23, 48, 46);
-		trackergoToMenubtn.setBorderPainted(false);
-		trackergoToMenubtn.setContentAreaFilled(false);
-		TrackerPanel.add(trackergoToMenubtn);
-
-		trackergoToMenubtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TrackerPanel.setVisible(false);
-				menuPanel.setVisible(true);
-			}
-		});
-
 		Image temp = new ImageIcon("./data/images/Icon/Daily_click.png").getImage();
 		Image change = temp.getScaledInstance(224, 125, Image.SCALE_SMOOTH);
 		ImageIcon tempicon = new ImageIcon(change);
-		goToDailyTrackerbtn.setIcon(tempicon);
-
-		goToDailyTrackerbtn.setBounds(224, 305, 224, 125);
-		goToDailyTrackerbtn.setBorderPainted(false);
-		goToDailyTrackerbtn.setContentAreaFilled(false);
-		TrackerPanel.add(goToDailyTrackerbtn);
-
-		goToDailyTrackerbtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TrackerPanel.setVisible(false);
-				dailyTrackerPanel.setVisible(true);
-
-			}
-		});
-
-		goToDailyTrackerbtn.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Image temp = new ImageIcon("./data/images/Icon/Daily_click.png").getImage();
-				Image change = temp.getScaledInstance(224, 125, Image.SCALE_SMOOTH);
-				ImageIcon tempicon = new ImageIcon(change);
-				goToDailyTrackerbtn.setIcon(tempicon);
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				Image temp = new ImageIcon("./data/images/Icon/Daily_click_line.png").getImage();
-				Image change = temp.getScaledInstance(224, 125, Image.SCALE_SMOOTH);
-				ImageIcon tempicon = new ImageIcon(change);
-				goToDailyTrackerbtn.setIcon(tempicon);
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
 
 		temp = new ImageIcon("./data/images/Icon/Monthly_click.png").getImage();
 		change = temp.getScaledInstance(351, 126, Image.SCALE_SMOOTH);
 		tempicon = new ImageIcon(change);
-		goToMonthlyTracker.setIcon(tempicon);
-
-		goToMonthlyTracker.setBounds(758, 305, 351, 126);
-		goToMonthlyTracker.setBorderPainted(false);
-		goToMonthlyTracker.setContentAreaFilled(false);
-		TrackerPanel.add(goToMonthlyTracker);
-
-		goToMonthlyTracker.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TrackerPanel.setVisible(false);
-				monthlyTrackerPanel.setVisible(true);
-
-			}
-		});
-
-		goToMonthlyTracker.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Image temp = new ImageIcon("./data/images/Icon/Monthly_click.png").getImage();
-				Image change = temp.getScaledInstance(351, 126, Image.SCALE_SMOOTH);
-				ImageIcon tempicon = new ImageIcon(change);
-				goToMonthlyTracker.setIcon(tempicon);
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				Image temp = new ImageIcon("./data/images/Icon/Monthly_click_line.png").getImage();
-				Image change = temp.getScaledInstance(351, 126, Image.SCALE_SMOOTH);
-				ImageIcon tempicon = new ImageIcon(change);
-				goToMonthlyTracker.setIcon(tempicon);
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-
-		monthlyToTracker.setBounds(63, 357, 70, 60);
-		monthlyToTracker.setBorderPainted(false);
-		monthlyToTracker.setContentAreaFilled(false);
-		monthlyTrackerPanel.add(monthlyToTracker);
-
-		monthlyToTracker.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				monthlyTrackerPanel.setVisible(false);
-				TrackerPanel.setVisible(true);
-			}
-		});
-
-		dailyToTracker.setBounds(67, 366, 64, 48);
-		dailyToTracker.setBorderPainted(false);
-		dailyToTracker.setContentAreaFilled(false);
-		dailyTrackerPanel.add(dailyToTracker);
-
-		dailyToTracker.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dailyTrackerPanel.setVisible(false);
-				TrackerPanel.setVisible(true);
-			}
-		});
 		SimpleAttributeSet styleSet = new SimpleAttributeSet();
 		StyleConstants.setFontSize(styleSet, 20);
 
