@@ -115,6 +115,8 @@ public class Main {
 
 			}
 		};
+		
+		
 			// Make Mood Panel
 		ImagePanel MoodMonth01 = new ImagePanel(
 				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
@@ -178,7 +180,14 @@ public class Main {
 		ImageIcon PlayIcon = new ImageIcon("./data/images/Icon/play.png");
 		ImageIcon PauseIcon = new ImageIcon("./data/images/Icon/Pause.png");
 		
-		
+		/* ---------------- Label ---------------------------- */
+
+			// Clock Label
+		clock_time = new JLabel("");
+		clock_time.setForeground(new Color(153, 0, 51));
+		clock_time.setFont(new Font("Digital-7 Italic", Font.PLAIN, 70));
+		clock_time.setBounds(1045, 597, 190, 78);
+		PlanPanel.add(clock_time);
 
 		/* ---------------- Button ---------------------------- */
 			// Make the Button
@@ -188,7 +197,7 @@ public class Main {
 		UpdatePlanbtn = new JButton("");
 		JButton Deletebtn = new JButton("");
 		JButton Playbtn = new JButton("");
-		JButton goToMenu = new JButton("Your Secretary for The Day, Kaily.");
+		JButton goToMenu = new JButton("당신의 하루를 함께하는 비서, Kaily");
 		JButton Planbtn = new JButton("");
 		JButton Moodbtn = new JButton("");
 		JButton MonthBtn[][] = new JButton[12][];
@@ -332,6 +341,7 @@ public class Main {
 		UpdatePlanbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				clock_time.setText(digitalClock());
 				String text = "";
 				PlanPrintPanel.setText("");
 				try {
@@ -341,6 +351,7 @@ public class Main {
 				}
 
 				try {
+					
 					HTMLEditorKit kit = new HTMLEditorKit();
 					HTMLDocument HtmlDoc = new HTMLDocument();
 
@@ -370,7 +381,7 @@ public class Main {
 								null);
 						Util.makeMp3(text, "schedule");
 						audio.change("schedule");
-						clock_time.setText(digitalClock());
+						
 					}
 
 				} catch (Exception e1) {
@@ -381,14 +392,7 @@ public class Main {
 		
 		
 		
-		/* ---------------- Label ---------------------------- */
-
-			// Clock Label
-		clock_time = new JLabel("");
-		clock_time.setForeground(new Color(153, 0, 51));
-		clock_time.setFont(new Font("Digital-7 Italic", Font.PLAIN, 70));
-		clock_time.setBounds(1045, 597, 190, 78);
-		PlanPanel.add(clock_time);
+		
 
 		
 
