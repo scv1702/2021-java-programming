@@ -5,6 +5,7 @@
  */
 
 package application;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -17,10 +18,14 @@ import java.io.File;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.IOException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Calendar;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -45,26 +50,11 @@ public class Main {
 	static int yearMood = date.get(Calendar.YEAR);
 	static int monthMood = date.get(Calendar.MONTH) + 1;
 	static int dayMood = date.get(Calendar.DATE);
-	private static JLabel clock_time;
+	static JLabel clock_time;
 
 	/* Create the application. */
 	public Main() {
 		initialize();
-	}
-
-	
-	// Calculate current clock
-	public static String digitalClock() {
-		String sday = null;
-		String _clock = null;
-		Calendar t = Calendar.getInstance();
-		int amPm = t.get(Calendar.AM_PM);
-		int hour = t.get(Calendar.HOUR);
-		int min = t.get(Calendar.MINUTE);
-		int day = t.get(Calendar.DAY_OF_WEEK);
-
-		_clock = String.format("%02d : %02d", hour, min);
-		return _clock;
 	}
 
 	// Determining the Tag text background color for each Plan
@@ -83,22 +73,20 @@ public class Main {
 		}
 		return tag;
 	}
-	
-		
+
 	// Main Code
 	public static void initialize() {
 		Audio audio = new Audio("schedule-initial");
-		
+
 		/* ---------------- Frame ---------------------------- */
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setTitle("Knu Daily, Kaily");
-		
-		
+
 		/* ---------------- Panel ---------------------------- */
-			// Make Panel
+		// Make Panel
 		ImagePanel startPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Kaily_start.png").getImage());
 		ImagePanel menuPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/Kaily_menu.png").getImage());
 		ImagePanel MoodPanel = new ImagePanel(new ImageIcon("./data/images/panel_page/MoodPanel.png").getImage());
@@ -115,9 +103,8 @@ public class Main {
 
 			}
 		};
-		
-		
-			// Make Mood Panel
+
+		// Make Mood Panel
 		ImagePanel MoodMonth01 = new ImagePanel(
 				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
 		ImagePanel MoodMonth02 = new ImagePanel(
@@ -142,17 +129,17 @@ public class Main {
 				new ImageIcon("./data/images/panel_page/MonthPanel/30_Panel.png").getImage());
 		ImagePanel MoodMonth12 = new ImagePanel(
 				new ImageIcon("./data/images/panel_page/MonthPanel/31_Panel.png").getImage());
-		
-			// Set Panel
+
+		// Set Panel
 		MoodPanel.setVisible(false);
 		PlanPanel.setVisible(false);
 		menuPanel.setVisible(false);
-		
+
 		PlanPanel.setLayout(null);
-		
+
 		PlanPrintPanel.setContentType("text/html");
 		PlanPrintPanel.setEditable(false);
-	
+
 		frame.getContentPane().add(menuPanel);
 		frame.getContentPane().add(PlanPanel);
 		frame.getContentPane().add(MoodPanel);
@@ -160,37 +147,37 @@ public class Main {
 
 		frame.setSize(startPanel.getDim());
 		frame.setPreferredSize(startPanel.getDim());
-		
-		
+
 		ScrollPrint.setBounds(154, 116, 807, 478);
 		PlanPrintPanel.setEditable(false);
 		PlanPrintPanel.setBounds(336, 90, 790, 509);
 		PlanPanel.add(ScrollPrint, BorderLayout.CENTER);
 
 		StyledDocument doc = PlanPrintPanel.getStyledDocument();
-		
-		
 
-		
-		
 		/* ---------------- Icon ---------------------------- */
 		ImageIcon clickTracker = new ImageIcon("./data/images/Icon/Tracker_click_line.png");
 		ImageIcon clickPlan = new ImageIcon("./data/images/Icon/Plan_click_line.png");
 		ImageIcon clickMood = new ImageIcon("./data/images/Icon/Mood_click_line.png");
 		ImageIcon PlayIcon = new ImageIcon("./data/images/Icon/play.png");
 		ImageIcon PauseIcon = new ImageIcon("./data/images/Icon/Pause.png");
-		
+
 		/* ---------------- Label ---------------------------- */
 
-			// Clock Label
+		// Clock Label
 		clock_time = new JLabel("");
 		clock_time.setForeground(new Color(153, 0, 51));
 		clock_time.setFont(new Font("Digital-7 Italic", Font.PLAIN, 70));
 		clock_time.setBounds(1045, 597, 190, 78);
 		PlanPanel.add(clock_time);
 
+		TimerThread th = new TimerThread(clock_time);
+		ExecutorService executorService = Executors.newCachedThreadPool();
+		executorService.execute(th);
+		executorService.shutdown();
+
 		/* ---------------- Button ---------------------------- */
-			// Make the Button
+		// Make the Button
 		JButton plangoToMenubtn = new JButton("");
 		JButton AddPlanbtn = new JButton("");
 		JButton moodgoToMenubtn = new JButton("");
@@ -201,15 +188,15 @@ public class Main {
 		JButton Planbtn = new JButton("");
 		JButton Moodbtn = new JButton("");
 		JButton MonthBtn[][] = new JButton[12][];
-		
-			// Set the Icon
+
+		// Set the Icon
 		AddPlanbtn.setIcon(new ImageIcon("./data/images/Icon/Add.png"));
 		Deletebtn.setIcon(new ImageIcon("./data/images/Icon/delete.png"));
 		UpdatePlanbtn.setIcon(new ImageIcon("./data/images/Icon/Update.png"));
 		Planbtn.setIcon(new ImageIcon("./data/images/Icon/Plan_r.png"));
 		Moodbtn.setIcon(new ImageIcon("./data/images/Icon/Mood_r.png"));
-		
-			// Plan Button
+
+		// Plan Button
 		Planbtn.setBorderPainted(false);
 		Planbtn.setBackground(Color.WHITE);
 		Planbtn.setBounds(322, 324, 90, 55);
@@ -222,8 +209,8 @@ public class Main {
 				PlanPanel.setVisible(true);
 			}
 		});
-		
-			// Mood Button
+
+		// Mood Button
 		Moodbtn.setBorderPainted(false);
 		Moodbtn.setBackground(Color.WHITE);
 		Moodbtn.setBounds(851, 324, 120, 51);
@@ -275,8 +262,8 @@ public class Main {
 				}
 			}
 		});
-		
-			// Plan -> Menu Button
+
+		// Plan -> Menu Button
 		plangoToMenubtn.setBounds(1215, 25, 48, 46);
 		plangoToMenubtn.setBorderPainted(false);
 		plangoToMenubtn.setContentAreaFilled(false);
@@ -289,8 +276,8 @@ public class Main {
 				menuPanel.setVisible(true);
 			}
 		});
-		
-			// Add Plan Button
+
+		// Add Plan Button
 		AddPlanbtn.setBounds(40, 635, 61, 56);
 		AddPlanbtn.setBorderPainted(false);
 		PlanPanel.add(AddPlanbtn);
@@ -301,13 +288,13 @@ public class Main {
 				new MakeAddPlanFrame();
 			}
 		});
-		
-			// Update Plan Button
+
+		// Update Plan Button
 		UpdatePlanbtn.setBounds(110, 635, 66, 56);
 		PlanPanel.add(UpdatePlanbtn);
 		UpdatePlanbtn.setBorderPainted(false);
-		
-			// Delete Plan Button
+
+		// Delete Plan Button
 		Deletebtn.setBounds(181, 633, 61, 63);
 		Deletebtn.setBorderPainted(false);
 		Deletebtn.addActionListener(new ActionListener() {
@@ -317,8 +304,8 @@ public class Main {
 			}
 		});
 		PlanPanel.add(Deletebtn);
-		
-			// Audio Play Button
+
+		// Audio Play Button
 		Playbtn.setIcon(PlayIcon);
 		Playbtn.addActionListener(new ActionListener() {
 			@Override
@@ -336,12 +323,11 @@ public class Main {
 		Playbtn.setBounds(253, 635, 61, 63);
 		PlanPanel.add(Playbtn);
 		Playbtn.setBorderPainted(false);
-		
-			// Update Plan Button
+
+		// Update Plan Button
 		UpdatePlanbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clock_time.setText(digitalClock());
 				String text = "";
 				PlanPrintPanel.setText("");
 				try {
@@ -351,7 +337,7 @@ public class Main {
 				}
 
 				try {
-					
+
 					HTMLEditorKit kit = new HTMLEditorKit();
 					HTMLDocument HtmlDoc = new HTMLDocument();
 
@@ -381,23 +367,16 @@ public class Main {
 								null);
 						Util.makeMp3(text, "schedule");
 						audio.change("schedule");
-						
-					}
 
+					}
 				} catch (Exception e1) {
 					System.out.println(e1);
 				}
 			}
 		});
-		
-		
-		
-		
-
-		
 
 		/* ---------------- Mood Panel ---------------------------- */
-		
+
 		MoodMonth01.setLayout(new GridLayout(5, 7));
 		MoodMonth01.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth01);
@@ -421,7 +400,7 @@ public class Main {
 		}
 
 		// Month : 2 (Panel)
-		
+
 		MoodMonth02.setLayout(new GridLayout(5, 7));
 		MoodMonth02.setBounds(175, 100, 924, 544);
 		MoodPanel.add(MoodMonth02);
@@ -1017,8 +996,6 @@ public class Main {
 				}
 			}
 		});
-
-
 
 		goToMenu.setBounds(431, 402, 483, 71);
 		startPanel.add(goToMenu);
