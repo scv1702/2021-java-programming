@@ -343,7 +343,7 @@ public class Main {
 
 					PlanPrintPanel.setEditorKit(kit);
 					PlanPrintPanel.setDocument(HtmlDoc);
-
+					
 					for (Day d : DB.dayDB) {
 						text += DB.searchScheduleList(d);
 						kit.insertHTML(HtmlDoc, HtmlDoc.getLength(),

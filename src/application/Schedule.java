@@ -1,8 +1,13 @@
 package application;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Schedule implements Comparable<Schedule> {
 	private String content;
-	private String startClock;
+	private SimpleDateFormat f = new SimpleDateFormat("HH:mm-HH:mm");
+	private Date d;
 	private String tag;
 
 	private int startHour;
@@ -16,8 +21,14 @@ public class Schedule implements Comparable<Schedule> {
 	public Schedule(String content, String tag, int startHour, int startMin, int finishHour, int finishMin) {
 		this.content = content;
 		this.tag = tag;
-		this.startClock = String.format("%s-%s", startHour, startMin);
-
+	
+		try {
+			this.d = f.parse(startHour + ":" + startMin + "-" + finishHour + ":" + finishMin);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
 		this.startHour = startHour;
 		this.startMin = startMin;
 
@@ -65,10 +76,6 @@ public class Schedule implements Comparable<Schedule> {
 		this.finishMin = finishMin;
 	}
 
-	public String getStartClock() {
-		return startClock;
-	}
-
 	public String getStartTime() {
 		if (this.getStartMin() == 0) {
 			return String.format("%s시", getStartHour());
@@ -91,7 +98,7 @@ public class Schedule implements Comparable<Schedule> {
 
 	@Override
 	public int compareTo(Schedule s) {
-		return getStartClock().compareTo(s.getStartClock());
+		return this.d.compareTo(s.d);
 	}
 
 	public String toString() {
