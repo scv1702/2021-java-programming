@@ -5,36 +5,6 @@
 ## 데모 영상
 [최종 발표회](https://www.youtube.com/watch?v=peIZkN5qg24)
 
-## 프로젝트 멤버
-- **신찬규 (팀장)**
-- 이인성
-- 이윤서 
-- 이지현
-
-## 역할
-**신찬규**
-- 백엔드 개발
-- 프론트와 파일 시스템을 연결하는 API 구현
-- 네이버 Clova Voice TTS API를 이용한 오디오 제작 API 구현
-- 오디오 파일 재생 API 구현
-- Thread를 이용한 현재 시간을 알려주는 타이머 구현
-
-**이윤서**
-- 프론트엔드 개발
-- 하루의 일정을 기록할 수 있는 Plan 페이지 구현
-- 프론트의 전체 페이지를 버튼을 통해 이동할 수 있도록 연결
-
-**이지현**
-- 프론트엔드 개발, UI/UX 디자인
-- 하루의 감정을 기록할 수 있는 Mood 페이지 구현
-- 사용자와 상호 작용할 수 있도록 UI에 반응성 추가
-- 프로젝트 전체 UI/UX 및 감정 이모티콘 디자인
-
-**이인성**
-- 프론트엔드 개발
-- 하루의 감정을 기록할 수 있는 Mood 페이지 구현
-- 사용자와 상호 작용할 수 있도록 UI에 반응성 추가
-
 ## License
 <img align="right" src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
 
